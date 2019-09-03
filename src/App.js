@@ -12,21 +12,29 @@ const App = () => {
     {
       title: 'Instagram',
       url: 'https://www.instagram.com'
+    },
+    {
+      title: 'Twitter',
+      url: 'https://twitter.com'
+    },
+    {
+      title: 'Instagram',
+      url: 'https://www.instagram.com'
+    },
+    {
+      title: 'Twitter',
+      url: 'https://twitter.com'
+    },
+    {
+      title: 'Instagram',
+      url: 'https://www.instagram.com'
     }
   ]);
-
-  const linkContainer = {
-    display: 'block',
-    color: 'red',
-    maxWidth: '650px',
-    position: 'center',
-    margin: 'auto'
-  }
 
   return (
     <div>
       <UserHeader />
-      <div style={linkContainer}>
+      <div className="linksList">
         {links.map(link => <Link link={link}/>)}
       </div>
     </div>

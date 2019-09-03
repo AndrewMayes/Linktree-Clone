@@ -1,0 +1,39 @@
+* {
+  font-size: 1rem;
+  font-family: Karla,Helvetica,sans-serif;
+}
+
+.linksList {
+  display: block;
+  color: red;
+  max-width: 680px;
+  position: center;
+  margin: auto;
+}
+
+.linkContainer {
+  display: block;
+  border-style: solid;
+  border-color: black;
+  margin-bottom: 12px;
+  text-align: center;
+  padding: 17px;
+  text-decoration: none;
+  color: black;
+}
+
+.avatarStyle {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+}
+
+.userContainer {
+  text-align: center;
+  font-size: 12px;
+  margin: 30px;
+}
+
+.link:hover {
+  background-color: pink;
+}
