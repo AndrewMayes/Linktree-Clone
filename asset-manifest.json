@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.js": "/Linktree-Clone/static/js/main.ba7590ff.chunk.js",
-    "main.js.map": "/Linktree-Clone/static/js/main.ba7590ff.chunk.js.map",
+    "main.css": "/Linktree-Clone/static/css/main.00579568.chunk.css",
+    "main.js": "/Linktree-Clone/static/js/main.b9b918d3.chunk.js",
+    "main.js.map": "/Linktree-Clone/static/js/main.b9b918d3.chunk.js.map",
     "runtime~main.js": "/Linktree-Clone/static/js/runtime~main.7ce5f81a.js",
     "runtime~main.js.map": "/Linktree-Clone/static/js/runtime~main.7ce5f81a.js.map",
     "static/js/2.25c904eb.chunk.js": "/Linktree-Clone/static/js/2.25c904eb.chunk.js",
     "static/js/2.25c904eb.chunk.js.map": "/Linktree-Clone/static/js/2.25c904eb.chunk.js.map",
     "index.html": "/Linktree-Clone/index.html",
-    "precache-manifest.6b69f0c3178646402e57f1a409ac6d3f.js": "/Linktree-Clone/precache-manifest.6b69f0c3178646402e57f1a409ac6d3f.js",
-    "service-worker.js": "/Linktree-Clone/service-worker.js"
+    "precache-manifest.db0809918f97a230437c6663bec7c8e9.js": "/Linktree-Clone/precache-manifest.db0809918f97a230437c6663bec7c8e9.js",
+    "service-worker.js": "/Linktree-Clone/service-worker.js",
+    "static/css/main.00579568.chunk.css.map": "/Linktree-Clone/static/css/main.00579568.chunk.css.map"
   }
 }

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Linktree-Clone/precache-manifest.6b69f0c3178646402e57f1a409ac6d3f.js"
+  "/Linktree-Clone/precache-manifest.db0809918f97a230437c6663bec7c8e9.js"
 );
 
 self.addEventListener('message', (event) => {
