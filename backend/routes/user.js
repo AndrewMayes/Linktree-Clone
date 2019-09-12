@@ -11,15 +11,17 @@ router.get('/', (req, res) => {
   User.find()
     .sort({ date: -1 })
     .then(user => res.json(user))
+    .catch(err => res.status(400).json('Error: ' + err))
 });
 
 // @route GET /users/:username
 // @desc Get user by username
 // @access Public
 router.get('/:username', (req, res) => {
-  User.find({ "username": req.params.username })
+  const username = req.params.username
+  User.findOne({ "username": new RegExp(username, "i") })
     .then(user => res.json(user))
-    .catch(err => res.status(404).json({success: false}))
+    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // @route POST /users
@@ -30,30 +32,38 @@ router.post('/', (req, res) => {
     username: req.body.username
   });
 
-  newUser.save().then(user => res.json(user));
+  newUser.save()
+    .then(user => res.json(user))
+    .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// @route PATCH /users/:id
-// @desc Create a link
+// @route PATCH /users/:username
+// @desc Add a link to the user's links
 // @access Public
-router.patch('/:id', (req, res) => {
-  User.findById(req.params.id)
+router.patch('/:username', (req, res) => {
+  const username = req.params.username
+  User.findOne({ "username": new RegExp(username, "i") })
     .then(user => {
-      let url = req.body.url;
-      let linkTitle = req.body.linkTitle;
+      const url = req.body.url;
+      const linkTitle = req.body.linkTitle;
       user.links.push({"url": url, "linkTitle": linkTitle})
-      user.save().then(user => res.json(user))
+      user.save()
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json('Error: ' + err));
     })
-    .catch(err => res.status(404).json({success: false}))
+    .catch(err => res.status(400).json('Error: ' + err))
 });
 
-// @route DELETE /users/:id
-// @desc Delete a user
+// @route DELETE /users/:username
+// @desc Delete a user by username
 // @access Public
-router.delete('/:id', (req, res) => {
-  User.findById(req.params.id)
-    .then(user => user.remove().then(() => res.json({success: true})))
-    .catch(err => res.status(404).json({success: false}))
+router.delete('/:username', (req, res) => {
+  const username = req.params.username
+  User.deleteOne({ "username": new RegExp(username, "i") })
+    .then(() => res.json({success: true}))
+    .catch(err => res.status(400).json('Error: ' + err));
 });
+
+
 
 module.exports = router;
