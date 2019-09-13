@@ -1,46 +1,25 @@
-import React, { useState } from 'react';
-import Link from './components/Link';
-import UserHeader from './components/UserHeader';
+import React from 'react';
+import Home from './components/Home';
+import UserLinkTree from './components/UserLinkTree';
+import NotFound from './components/NotFound';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const App = () => {
-
-  const [links, setLinks] = useState([
-    {
-      title: 'Twitter',
-      url: 'https://twitter.com'
-    },
-    {
-      title: 'Instagram',
-      url: 'https://www.instagram.com'
-    },
-    {
-      title: 'Twitter',
-      url: 'https://twitter.com'
-    },
-    {
-      title: 'Instagram',
-      url: 'https://www.instagram.com'
-    },
-    {
-      title: 'Twitter',
-      url: 'https://twitter.com'
-    },
-    {
-      title: 'Instagram',
-      url: 'https://www.instagram.com'
-    }
-  ]);
-
   return (
-    <div>
-      <UserHeader />
-      <div className="linksList">
-        {links.map(link => <Link link={link}/>)}
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/:username" component={UserLinkTree} />
+          <Route component={NotFound} />
+        </Switch>
       </div>
-    </div>
+    </Router>
   )
 }
 
 export default App
+
+
 
 

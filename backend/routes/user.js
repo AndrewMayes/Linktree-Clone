@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 // @access Public
 router.get('/:username', (req, res) => {
   const username = req.params.username
-  User.findOne({ "username": new RegExp(username, "i") })
+  User.findOne({ "username": username.toLowerCase() })
     .then(user => res.json(user))
     .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
 });
 
 // @route PATCH /users/:username
-// @desc Add a link to the user's links
+// @desc Add a link a specific user's links
 // @access Public
 router.patch('/:username', (req, res) => {
   const username = req.params.username
