@@ -19,7 +19,8 @@ router.get('/', (req, res) => {
 // @access Public
 router.get('/:username', (req, res) => {
   const username = req.params.username
-  User.findOne({ "username": username.toLowerCase() })
+  const queryUsername = '^' + username + '$'
+  User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
     .then(user => res.json(user))
     .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -41,8 +42,9 @@ router.post('/', (req, res) => {
 // @desc Add a link a specific user's links
 // @access Public
 router.patch('/:username', (req, res) => {
-  const username = req.params.username
-  User.findOne({ "username": new RegExp(username, "i") })
+  const username = req.params.username;
+  const queryUsername = '^' + username + '$';
+  User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
     .then(user => {
       const url = req.body.url;
       const linkTitle = req.body.linkTitle;
