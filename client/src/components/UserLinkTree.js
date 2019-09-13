@@ -3,7 +3,7 @@ import axios from 'axios';
 import UserHeader from './UserHeader';
 import Link from './Link';
 import NotFound from './NotFound';
-
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const UserLinkTree = (props) => {
 
@@ -34,7 +34,7 @@ const UserLinkTree = (props) => {
   // Return loading UI while waiting for GET request, then load user's page once the request goes through.
   // Return NotFound component if GET request does not find the searched username
   return ( 
-    (loading && !notFound) ? <div className="loader"></div>
+    (loading && !notFound) ? <div className="loader"><ClipLoader sizeUnit={"px"} size={150} color={'#39e09b'} loading={true}/></div>
     : (notFound) ? <NotFound /> 
     : (<>
         <UserHeader username={username}/>
