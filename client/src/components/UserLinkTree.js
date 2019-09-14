@@ -16,9 +16,10 @@ const UserLinkTree = (props) => {
     const getLinks = () => {
       axios.get(`/users/${props.match.params.username}`)
         .then(res => {
+          console.log(res)
           console.log(res.data.links);
           setLinks(res.data.links);
-          setUsername(props.match.params.username);
+          setUsername(res.data.username);
           setLoading(false);
         })
         .catch(err => {
