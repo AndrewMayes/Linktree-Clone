@@ -11,7 +11,7 @@
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "engines": {
-    "node": "8.9.2"
+    "node": "10.16.0"
   },
   "author": "Andrew Mayes",
   "license": "MIT",
