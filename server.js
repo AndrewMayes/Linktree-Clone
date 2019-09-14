@@ -33,8 +33,14 @@ app.use('/users', users);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static(__dirname + '/client/build'));
+  // ... other app.use middleware 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+// ...
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 }
 
 // Starts the server
