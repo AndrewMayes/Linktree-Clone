@@ -3,6 +3,10 @@
   font-family: Karla,Helvetica,sans-serif;
 }
 
+html {
+  background-color: #39e09b;
+}
+
 .linksList {
   display: block;
   color: red;
@@ -45,4 +49,38 @@
   width: 100%;
   height: 60vh;
   overflow: hidden;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.sign-in-button:hover {
+  color: rgb(31, 28, 28);
+  background-color: white
+}
+
+.sign-in-button {
+  background-color: rgb(31, 28, 28);
+  text-decoration: none;
+  padding: 30px 50px 30px 50px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 50px;
+  width: 83.13px;
+  text-align: center;
+}
+
+#or {
+  color: white;
+  background-color: rgb(31, 28, 28); 
+  padding: 2px 3px 2px 3px
 }

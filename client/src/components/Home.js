@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
 
 const Home = () => {
   return (
-    <div>
-      <h1>HOME PAGE</h1>
+    <div className="homepage">
+      <div className="buttons">
+        <a className="sign-in-button" href="/signin" rel="noopener noreferrer">Log In!</a>
+        <span id="or">or</span>
+        <a className="sign-in-button" href="/signup" rel="noopener noreferrer">Sign Up!</a>
+      </div>
     </div>
   )
 }
