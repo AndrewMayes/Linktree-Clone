@@ -79,8 +79,12 @@ html {
   text-align: center;
 }
 
+.sign-in-button p {
+  margin: 0px;
+}
+
 #or {
   color: white;
-  background-color: rgb(31, 28, 28); 
-  padding: 2px 3px 2px 3px
+  font-weight: 700;
+  letter-spacing: 1.5px;
 }

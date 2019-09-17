@@ -1,12 +1,16 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div className="homepage">
       <div className="buttons">
-        <a className="sign-in-button" href="/login" rel="noopener noreferrer">Log In!</a>
+        <Link to='/login' className="sign-in-button">
+          <p>Log In!</p>
+        </Link>
         <span id="or">or</span>
-        <a className="sign-in-button" href="/signup" rel="noopener noreferrer">Sign Up!</a>
+        <Link to='/signup' className="sign-in-button">
+          <p>Sign Up!</p>
+        </Link>
       </div>
     </div>
   )
