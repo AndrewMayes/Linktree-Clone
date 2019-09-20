@@ -1,4 +1,6 @@
 import React, { useReducer } from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 const Login = () => {
   const [userInput, setUserInput] = useReducer(
@@ -11,8 +13,24 @@ const Login = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log('signup submited!');
-    
+    const loginInfo = {
+      "username": userInput.username,
+      "password": userInput.password
+    }
+    const login = () => {
+      axios.post(`/users/auth`, loginInfo )
+        .then(res => {
+          console.log(res)
+          console.log(res.data);
+          //window.location = `/${res.data.user.username}`;
+          window.location = '/admin';
+        })
+        .catch(err => {
+          console.log(err);
+          alert('Credentials do not match our records')
+        })
+    }
+    login();
     setUserInput({username: '', password: ''});
   }
 

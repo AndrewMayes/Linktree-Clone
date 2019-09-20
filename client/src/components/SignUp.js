@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import axios from 'axios';
 
 const SignUp = () => {
   const [userInput, setUserInput] = useReducer(
@@ -12,7 +13,26 @@ const SignUp = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log('signup submited!');
+    
+    const signupInfo = {
+      "username": userInput.username,
+      "password": userInput.password,
+      "email": userInput.email
+    }
+    const signup = () => {
+      axios.post(`/users/`, signupInfo )
+        .then(res => {
+          console.log(res)
+          console.log(res.data);
+          //window.location = `/${res.data.user.username}`;
+          window.location = '/admin';
+        })
+        .catch(err => {
+          console.log(err);
+          alert('Please enter all fields')
+        })
+    }
+    signup();
 
     setUserInput({username: '', email: '', password: ''});
   }
