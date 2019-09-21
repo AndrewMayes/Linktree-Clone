@@ -1,10 +1,15 @@
-import React from 'react'
+import React from 'react';
+import NewLink from './NewLink';
+import AdminHeader from './AdminHeader';
 
 const Admin = () => {
   return (
-    <div>
-      <h1>This is the admin page</h1>
-    </div>
+    <>
+      <AdminHeader />
+      <div className="flex-container">
+        <NewLink />
+      </div>
+    </>
   )
 }
 

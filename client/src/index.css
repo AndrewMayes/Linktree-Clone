@@ -7,6 +7,10 @@ html {
   background-color: #39e09b;
 }
 
+body {
+  margin: 0;
+}
+
 .container input {
   margin: 10px;
 }
@@ -132,6 +136,28 @@ input {
   text-decoration: none;
   font-size: 20px;;
 }
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+}
+
+.new-link {
+  background-color: white;
+  padding: 50px;
+  border-radius: 3px;
+}
+
+.admin-header {
+  text-align: center;
+  background-color: pink;
+  color: white;
+  padding: 15px;
+}
+
 
 /*
 input:focus ~ .floating-label,
