@@ -33,7 +33,7 @@ const NewLink = () => {
     }
 
     newLink();
-    setLinkInput({username: '', password: ''});
+    setLinkInput({linkTitle: '', url: ''});
   }
 
   const onChange = e => {
