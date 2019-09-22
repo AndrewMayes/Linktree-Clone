@@ -1,4 +1,6 @@
 # Linktree-Clone
 Clone of [Linktree](https://linktr.ee)
 
-[Live Demo](https://andrewmayes.github.io/Linktree-Clone/)
+[Live Demo](https://linktree-clone.herokuapp.com/)
+
+*Demo hosted on free version of heroku so initial load time will be long*
