@@ -152,10 +152,34 @@ input {
 }
 
 .admin-header {
-  text-align: center;
-  background-color: pink;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(31, 28, 28);
   color: white;
   padding: 15px;
+  height: 30px;
+}
+
+.header-links {
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 50px;
+  text-align: center;
+}
+
+.header-links:hover {
+  color: rgb(31, 28, 28);
+  background-color: white;
+}
+
+.active {
+  border-bottom: 3px solid #39e09b;
 }
 
 

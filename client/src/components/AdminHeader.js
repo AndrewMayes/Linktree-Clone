@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const AdminHeader = () => {
+const AdminHeader = ({ admin, settings }) => {
   return (
     <div className="admin-header">
-      <h1>Header</h1>
+      <Link to='/admin' className={`header-links ${admin}`}>Links</Link>
+      <Link to='/settings' className={`header-links ${settings}`}>Settings</Link>
     </div>
   )
 }

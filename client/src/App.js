@@ -7,6 +7,7 @@ import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Admin from './components/Admin';
 import Footer from './components/Footer';
+import Settings from './components/Settings';
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ const App = () => {
           <Route path="/admin" component={Admin} />
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
+          <Route path="/settings" component={Settings} />
+          {/* All other paths need to remain above the username path */}
           <Route path="/:username" component={UserLinkTree} />
           <Route component={NotFound} />
         </Switch>
