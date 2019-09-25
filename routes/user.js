@@ -66,97 +66,55 @@ const jwtSecret = process.env.jwtSecret;
 // @route POST /users
 // @desc Create a user (Register)
 // @access Public
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+
   const { username, email, password } = req.body;
 
-  // Validation
-  if (!username || !email || !password) {
-    return res.status(400).json({msg: 'Please enter all fields'})
-  }
+  // Check if the email is already in the database
+  const emailExists = await User.findOne({ email });
+  if (emailExists) return res.status(400).send('Email already exists');
 
-  // Check for existing user
-  User.findOne({ email })
-    .then(user => {
-      if (user) {
-        return res.status(400).json({msg: 'User already exists'})
-      }
+  // Check if the username is already in the database
+  const usernameExists = await User.findOne({ username });
+  if (usernameExists) return res.status(400).send('Username already exists');
 
-      const newUser = new User({
-        username,
-        email,
-        password
-      });
+  // Salt and Hash password
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
 
-      // Create salt & hash
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw err;
-          newUser.password = hash;
-          newUser.save()
-            .then(user => {
-              jwt.sign(
-                { id: user.id },
-                jwtSecret,
-                { expiresIn: 3600 },
-                (err, token) => {
-                  if (err) throw err;
-                  res.json({
-                    token,
-                    user: {
-                      id: user.id,
-                      username: user.username,
-                      email: user.email
-                    }
-                  });
-                }
-              )
-            });
-        })
-      })
-    })
+  // Create a new user
+  const newUser = new User({
+    username,
+    email,
+    password: hashedPassword
+  });
+
+  try {
+    const savedUser = await newUser.save();
+    res.send({ newUser: savedUser._id });
+  } catch(err) {
+    res.status(400).send(err);
+  } 
 });
 
 // @route POST /users/auth
 // @desc Auth user (Login)
 // @access Public
-router.post('/auth', (req, res) => {
+router.post('/auth', async (req, res) => {
   const { username, password } = req.body;
 
-  // Validation
-  if (!username || !password) {
-    return res.status(400).json({msg: 'Please enter all fields'})
-  }
+  // Check if username exists
+  const userExists = await User.findOne({ username });
+  if (!userExists) return res.status(400).send('Username not found');
 
-  // Check for existing user
-  User.findOne({ username })
-    .then(user => {
-      if (!user) {
-        return res.status(400).json({msg: 'User does not exist'})
-      }
+  // Password is correct
+  const validPass = await bcrypt.compare(password, userExists.password);
+  if (!validPass) return res.status(400).send('Invalid password');
 
-      // Validate Password
-      bcrypt.compare(password, user.password)
-        .then(isMatch => {
-          if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' });
+  // Create and assign a token
+  const token = jwt.sign({ _id: userExists._id }, process.env.jwtSecret);
+  res.header('auth-token', token).send(token);
 
-          jwt.sign(
-            { id: user.id },
-            jwtSecret,
-            { expiresIn: 3600 },
-            (err, token) => {
-              if (err) throw err;
-              res.json({
-                token,
-                user: {
-                  id: user.id,
-                  username: user.username,
-                  email: user.email
-                }
-              });
-            }
-          )
-        })
-      })
 });
 
 
