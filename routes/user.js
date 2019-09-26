@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const verify = require('./verifyToken');
 
 require('dotenv').config();
 
@@ -16,6 +17,28 @@ router.get('/', (req, res) => {
     .sort({ date: -1 })
     .then(user => res.json(user))
     .catch(err => res.status(400).json('Error: ' + err))
+});
+
+// @route GET /users/admin
+// @desc Get user
+// @access Private
+router.get('/admin', verify, (req, res) => {
+  //res.send(req.user)
+  /*
+  const user = req.user;
+  //res.send(user)
+  User.findById(user._id)
+    .then(user => res.json(user))
+    */
+});
+
+// @route GET /users/auth/
+// @desc Get user data
+// @access Private
+router.get('/auth', verify, (req, res) => {
+  User.findById(req.user._id)
+  .select('-password')
+  .then(user => res.json(user))
 });
 
 // @route GET /users/:username
@@ -111,14 +134,20 @@ router.post('/auth', async (req, res) => {
   const validPass = await bcrypt.compare(password, userExists.password);
   if (!validPass) return res.status(400).send('Invalid password');
 
-  // Create and assign a token
+  // Create a token
   const token = jwt.sign({ _id: userExists._id }, process.env.jwtSecret);
+  /*
+  // Set cookie options
+  const cookieOptions = {
+    httpOnly: true
+  }
+
+  // Add cookie using JWT auth token
+  res.cookie('auth_token', token, cookieOptions)
+  */
+  // Send token to header
   res.header('auth-token', token).send(token);
 
 });
-
-
-
-
 
 module.exports = router;

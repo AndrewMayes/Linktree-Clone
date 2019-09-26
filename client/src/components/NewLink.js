@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
 
-const NewLink = () => {
+const NewLink = ({ username }) => {
   const [linkInput, setLinkInput] = useReducer(
     (state, newState) => ({...state, ...newState}),
     {
@@ -11,9 +11,6 @@ const NewLink = () => {
   );
 
   const onSubmit = e => {
-    //Temp username for adding links
-    const username = 'andrewm757';
-
     e.preventDefault();
 
     const linkInfo = {
