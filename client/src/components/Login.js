@@ -21,9 +21,6 @@ const Login = () => {
     const login = () => {
       axios.post(`/users/auth`, loginInfo )
         .then(res => {
-          console.log(res)
-          console.log(res.data);
-
           // Save JWT token in localStorage
           localStorage.setItem('auth-token', res.data);
 

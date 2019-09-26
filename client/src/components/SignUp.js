@@ -21,10 +21,11 @@ const SignUp = () => {
     }
     const signup = () => {
       axios.post(`/users/`, signupInfo )
-        .then(res => {
-          console.log(res)
-          console.log(res.data);
-          //window.location = `/${res.data.user.username}`;
+        .then(res => {         
+          // Save JWT token in localStorage
+          localStorage.setItem('auth-token', res.data);
+
+          // Redirect user to admin page
           window.location = '/admin';
         })
         .catch(err => {
