@@ -114,7 +114,12 @@ router.post('/', async (req, res) => {
 
   try {
     const savedUser = await newUser.save();
-    res.send({ newUser: savedUser._id });
+    
+    // Create a token
+    const token = jwt.sign({ _id: savedUser._id }, process.env.jwtSecret);
+
+    // Send token to header
+    res.header('auth-token', token).send(token);
   } catch(err) {
     res.status(400).send(err);
   } 
