@@ -27,16 +27,15 @@ const Admin = () => {
     getName();
   }, [username]);
   
-  return (
-    <>
+  return (loading) ? <div className="loader"><ClipLoader sizeUnit={"px"} size={150} color={'rgb(31, 28, 28)'} loading={true}/></div> :
+    (<>
       <AdminHeader admin={'active'}/>
-      <h1>{`Hi ${username}!`}</h1>
       <div className="flex-container">
         <NewLink username={username}/>
-        <Link to={`/${username}`} target="_blank" className="sign-in-button">Your Linktree</Link>
+        <Link to={`/${username}`} target="_blank" className="sign-in-button">{username}'s Linktree</Link>
       </div>
-    </>
-  )
+    </>)
+  
 }
 
 export default Admin
