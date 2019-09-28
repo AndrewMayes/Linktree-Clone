@@ -85,7 +85,7 @@ body {
   height: 82px;
 }
 
-.signin-buttons {
+.signup-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,11 +94,11 @@ body {
   overflow: hidden;
 }
 
-.signin-buttons input {
+.signup-buttons input {
   margin: 10px;
 }
 
-.signin-buttons button {
+.signup-buttons button {
   height: 82px;
 }
 
@@ -139,6 +139,21 @@ body {
   padding: 30px 50px 30px 50px;
   font-weight: 700;
   letter-spacing: 1.5px;
+}
+
+.user-submit {
+  background-color: rgb(31, 28, 28);
+  cursor: pointer;
+  border: none;
+  padding: 30px 50px 30px 50px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: white
+}
+
+.user-submit:hover {
+  color: rgb(31, 28, 28);
+  background-color: white;
 }
 
 input::placeholder {
@@ -220,8 +235,8 @@ input {
   }
 }
 
-@media only screen and (max-width: 1100px) {
-  .signin-buttons {
+@media only screen and (max-width: 1250px) {
+  .signup-buttons {
     flex-direction: column;
   }
 }
