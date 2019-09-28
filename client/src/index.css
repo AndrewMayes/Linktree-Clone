@@ -11,14 +11,6 @@ body {
   margin: 0;
 }
 
-.container input {
-  margin: 10px;
-}
-
-.container button {
-  height: 82px;
-}
-
 .linksList {
   display: block;
   color: red;
@@ -74,6 +66,40 @@ body {
   width: 100%;
   height: 80vh;
   overflow: hidden;
+}
+
+.login-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.login-buttons input {
+  margin: 10px;
+}
+
+.login-buttons button {
+  height: 82px;
+}
+
+.signin-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.signin-buttons input {
+  margin: 10px;
+}
+
+.signin-buttons button {
+  height: 82px;
 }
 
 .sign-in-button:hover {
@@ -180,6 +206,24 @@ input {
 
 .active {
   border-bottom: 3px solid #39e09b;
+}
+
+@media only screen and (max-width: 600px) {
+  .buttons {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .login-buttons {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .signin-buttons {
+    flex-direction: column;
+  }
 }
 
 

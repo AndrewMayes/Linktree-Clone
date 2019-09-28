@@ -46,16 +46,14 @@ const SignUp = () => {
   }
 
   return (
-    <div className="container">
-      <div className="buttons">
-        <form onSubmit={onSubmit}>
-          <input type="text" name="username" value={userInput.username} onChange={onChange} placeholder="Username" className="user-input"/>
-          <input type="text" name="email" value={userInput.email} onChange={onChange} placeholder="Email" className="user-input"/>
-          <input type="password" name="password" value={userInput.password} onChange={onChange} placeholder="Password" autoComplete="password" className="user-input"/>
-          <button type="submit" disabled={!userInput.username || !userInput.email || !userInput.password}>Sign Up!</button>
-        </form>
+    <form onSubmit={onSubmit}>
+      <div className="signin-buttons">
+        <input type="text" name="username" value={userInput.username} onChange={onChange} placeholder="Username" className="user-input"/>
+        <input type="text" name="email" value={userInput.email} onChange={onChange} placeholder="Email" className="user-input"/>
+        <input type="password" name="password" value={userInput.password} onChange={onChange} placeholder="Password" autoComplete="password" className="user-input"/>
+        <button type="submit" disabled={!userInput.username || !userInput.email || !userInput.password}>Sign Up!</button>
       </div>
-    </div>
+    </form>
   )
 }
 

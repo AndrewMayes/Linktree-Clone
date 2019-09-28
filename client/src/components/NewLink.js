@@ -42,7 +42,7 @@ const NewLink = ({ username }) => {
   return (
     <div className="new-link">
       <form onSubmit={onSubmit}>
-      <input type="text" name="linkTitle" value={linkInput.linkTitle} onChange={onChange} placeholder="Link Title"/>
+      <input type="text" name="linkTitle" value={linkInput.linkTitle} onChange={onChange} placeholder="Title"/>
       <input type="text" name="url" value={linkInput.url} onChange={onChange} placeholder="URL"/>
       <button type="submit" disabled={!linkInput.linkTitle || !linkInput.url}>Submit</button>
       </form>

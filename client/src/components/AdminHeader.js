@@ -9,11 +9,11 @@ const AdminHeader = ({ admin, settings }) => {
   }
 
   return (
-    <div className="admin-header">
+    <nav className="admin-header">
       <Link to='/admin' className={`header-links ${admin}`}>Links</Link>
       <Link to='/settings' className={`header-links ${settings}`}>Settings</Link>
       <h1 className='header-links' onClick={logOut}>Log Out</h1>
-    </div>
+    </nav>
   )
 }
 
