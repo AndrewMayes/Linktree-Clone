@@ -90,7 +90,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 25vh;
+  height: 35vh;
   overflow: hidden;
 }
 
@@ -277,11 +277,21 @@ input {
   .login-buttons {
     flex-direction: column;
   }
+
+  .newlink-buttons {
+    flex-direction: column;
+  }
 }
 
 @media only screen and (max-width: 1250px) {
   .signup-buttons {
     flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  .header-links {
+    margin: 20px;
   }
 }
 

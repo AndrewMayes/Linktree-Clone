@@ -40,13 +40,13 @@ const NewLink = ({ username }) => {
   }
 
   return (
-    <div className="newlink-buttons">
-      <form onSubmit={onSubmit}>
-      <input type="text" name="linkTitle" value={linkInput.linkTitle} onChange={onChange} placeholder="Title" className="user-input"/>
-      <input type="text" name="url" value={linkInput.url} onChange={onChange} placeholder="URL" className="user-input"/>
-      <button type="submit" disabled={!linkInput.linkTitle || !linkInput.url} className="user-submit">Submit</button>
-      </form>
-    </div>
+    <form onSubmit={onSubmit}>
+      <div className="newlink-buttons">
+        <input type="text" name="linkTitle" value={linkInput.linkTitle} onChange={onChange} placeholder="Title" className="user-input"/>
+        <input type="text" name="url" value={linkInput.url} onChange={onChange} placeholder="URL" className="user-input"/>
+        <button type="submit" disabled={!linkInput.linkTitle || !linkInput.url} className="user-submit">Submit</button>
+      </div>
+    </form>
   )
 }
 
