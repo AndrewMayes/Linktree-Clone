@@ -19,8 +19,9 @@ const App = () => {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={Home} />
-          
+          <Route exact path="/" render={() => (
+            isAuth.token ? <Redirect to='/admin'/> : <Home />
+          )} />
           <Route path="/admin" render={() => (
             isAuth.token ? <Admin /> : <Redirect to='/' />
           )}/>
