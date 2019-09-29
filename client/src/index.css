@@ -246,25 +246,43 @@ input {
   width: 470px;
   margin: auto;
   margin-top: 50px;
+  border-radius: 30px;
 }
 
 .avatar-container {
-  background-color: aqua;
+  background-color: lightgray;
 }
 
 .avatar {
   display: inline-block;
-  margin: 10px 10px 10px 10px;
+  margin: 20px 10px 10px 20px;
 }
 
 .avatar-form {
   display: inline-block;
+  width: 50%;
+  margin: 0px 0px 0px 40px;
 }
 
 .change-avatar-style {
+  border-radius: 3px;
   width: 82px;
   height: 82px;
   cursor: pointer;
+}
+
+.remove-button {
+  position: relative;
+  border: 2px solid rgb(31, 28, 28);
+  padding: 5px;
+  text-align: center;
+  top: -35px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: rgb(31, 28, 28);
+  color: white;
 }
 
 @media only screen and (max-width: 600px) {
