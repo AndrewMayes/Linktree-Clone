@@ -1,7 +1,6 @@
 import React from 'react';
 import AdminHeader from './AdminHeader';
 import avatar from '../imgs/default.png';
-import AvatarComponent from './AvatarComponent'
 
 const Settings = () => {
 
@@ -16,7 +15,6 @@ const Settings = () => {
         <div className="avatar-container">
           <div className="avatar">
             <input type="image" src={avatar} name="change-avatar" className="change-avatar-style" onClick={onClick}/>
-            {/*<AvatarComponent />*/}
           </div>
           <div className="avatar-form">
             <div className="remove-button" onClick={onClick}>Remove</div>
