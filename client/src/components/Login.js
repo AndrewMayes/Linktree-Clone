@@ -1,54 +1,41 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
+import formValidation from './FormValidation';
+import inputErrors from './InputErrors';
 import { Redirect } from 'react-router-dom';
 
 const Login = () => {
-  const [userInput, setUserInput] = useReducer(
-    (state, newState) => ({...state, ...newState}),
-    {
-      username: '',
-      password: ''
-    }
-  );
 
-  const onSubmit = e => {
-    e.preventDefault();
-    
-    const loginInfo = {
-      "username": userInput.username,
-      "password": userInput.password
-    }
-    const login = () => {
-      axios.post(`/users/auth`, loginInfo )
-        .then(res => {
-          // Save JWT token in localStorage
-          localStorage.setItem('auth-token', res.data);
+  const initialState = {
+    username: '',
+    password: ''
+  };
 
-          // Redirect user to admin page
-          window.location = '/admin';
-        })
-        .catch(err => {
-          console.log(err);
-          alert('Credentials do not match our records')
-        })
-    }
-    login();
-    setUserInput({username: '', password: ''});
-  }
+  const {handleSubmit, handleChange, handleBlur, values, errors, isSubmitting} = formValidation(initialState, inputErrors);
 
-  const onChange = e => {
-    const {name, value} = e.target;
+  const axiosFunc = () => {
+    axios.post(`/users/auth`, values )
+      .then(res => {
+        // Save JWT token in localStorage
+        localStorage.setItem('auth-token', res.data);
 
-    setUserInput({[name]: value});
-
+        // Redirect user to admin page
+        window.location = '/admin';
+      })
+      .catch(err => {
+        console.log(err);
+        alert('Credentials do not match our records')
+      })
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={e => {handleSubmit(e, axiosFunc)}}>
       <div className="login-buttons">
-        <input type="text" name="username" value={userInput.username} onChange={onChange} placeholder="Username" className="user-input"/>
-        <input type="password" name="password" value={userInput.password} onChange={onChange} placeholder="Password" autoComplete="password" className="user-input"/>
-        <button type="submit" disabled={!userInput.username || !userInput.password} className="user-submit">Login!</button>
+        <input type="text" name="username" value={values.username} onChange={handleChange} placeholder="Username" className="user-input"/>
+        {errors.email && <p className="error-text">{errors.email}</p>}
+        <input type="password" name="password" value={values.password} onChange={handleChange} placeholder="Password" autoComplete="password" className="user-input"/>
+        {errors.password && <p className="error-text">{errors.password}</p>}
+        <button type="submit" disabled={isSubmitting} className="user-submit">Login!</button>
       </div>
     </form>
   )
