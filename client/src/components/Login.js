@@ -11,8 +11,6 @@ const Login = () => {
     password: ''
   };
 
-  const {handleSubmit, handleChange, handleBlur, values, errors, isSubmitting} = formValidation(initialState, inputErrors);
-
   const axiosFunc = () => {
     axios.post(`/users/auth`, values )
       .then(res => {
@@ -28,8 +26,11 @@ const Login = () => {
       })
   }
 
+  const {handleSubmit, handleChange, handleBlur, values, errors, isSubmitting} = formValidation(initialState, inputErrors, axiosFunc);
+
+
   return (
-    <form onSubmit={e => {handleSubmit(e, axiosFunc)}}>
+    <form onSubmit={handleSubmit}>
       <div className="login-buttons">
         <input type="text" name="username" value={values.username} onChange={handleChange} placeholder="Username" className="user-input"/>
         {errors.email && <p className="error-text">{errors.email}</p>}

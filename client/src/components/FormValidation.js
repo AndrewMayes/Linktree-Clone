@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const FormValidation = (initialState, validate) => {
+const FormValidation = (initialState, validate, reqFunc) => {
 
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState({});
@@ -10,6 +10,8 @@ const FormValidation = (initialState, validate) => {
     if (isSubmitting) {
       const noErrors = Object.keys(errors).length === 0;
       if (noErrors) {
+        console.log("authenticated!", values.email, values.password);
+        reqFunc();
         setSubmitting(false);
       } else {
         setSubmitting(false);
@@ -30,14 +32,11 @@ const FormValidation = (initialState, validate) => {
     setErrors(validationErrors);
   }
 
-  function handleSubmit(event, reqFunc) {
+  function handleSubmit(event) {
     event.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
     setSubmitting(true);
-
-    // Param should be function which performs an Axios request
-    reqFunc();
   }
 
   return {
