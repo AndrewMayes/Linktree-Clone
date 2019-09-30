@@ -285,6 +285,10 @@ input {
   color: white;
 }
 
+.error-text {
+  color: rgb(126, 4, 4);
+}
+
 @media only screen and (max-width: 600px) {
   .buttons {
     flex-direction: column;

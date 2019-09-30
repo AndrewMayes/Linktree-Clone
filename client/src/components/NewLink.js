@@ -1,50 +1,39 @@
-import React, { useReducer } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
+import formValidation from './FormValidation';
+import inputErrors from './InputErrors';
 
 const NewLink = ({ username }) => {
-  const [linkInput, setLinkInput] = useReducer(
-    (state, newState) => ({...state, ...newState}),
-    {
-      linkTitle: '',
-      url: ''
-    }
-  );
 
-  const onSubmit = e => {
-    e.preventDefault();
+  const initialState = {
+    linkTitle: '',
+    url: ''
+  };
 
-    const linkInfo = {
-      "linkTitle": linkInput.linkTitle,
-      "url": linkInput.url
-    }
-    const newLink = () => {
-      axios.patch(`/users/${username}`, linkInfo )
-        .then(res => {
-          console.log(res)
-          console.log(res.data);
-        })
-        .catch(err => {
-          console.log(err);
-          alert('Something went wrong')
-        })
-    }
-
-    newLink();
-    setLinkInput({linkTitle: '', url: ''});
+  const axiosFunc = () => {
+    axios.patch(`/users/${username}`, values )
+      .then(res => {
+        console.log(res)
+        console.log(res.data);
+        // Reset to initial state
+        setValues(initialState);
+      })
+      .catch(err => {
+        console.log(err);
+        alert('Something went wrong')
+      })
   }
 
-  const onChange = e => {
-    const {name, value} = e.target;
-
-    setLinkInput({[name]: value});
-  }
+  const {handleSubmit, handleChange, handleBlur, values, errors, isSubmitting, setValues} = formValidation(initialState, inputErrors, axiosFunc);
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className="newlink-buttons">
-        <input type="text" name="linkTitle" value={linkInput.linkTitle} onChange={onChange} placeholder="Title" className="user-input"/>
-        <input type="text" name="url" value={linkInput.url} onChange={onChange} placeholder="URL" className="user-input"/>
-        <button type="submit" disabled={!linkInput.linkTitle || !linkInput.url} className="user-submit">Submit</button>
+        <input type="text" name="linkTitle" value={values.linkTitle} onChange={handleChange} placeholder="Title" className="user-input"/>
+        {errors.linkTitle && <p className="error-text">{errors.linkTitle}</p>}
+        <input type="text" name="url" value={values.url} onChange={handleChange} placeholder="URL" className="user-input"/>
+        {errors.url && <p className="error-text">{errors.url}</p>}
+        <button type="submit" disabled={isSubmitting} className="user-submit">Submit</button>
       </div>
     </form>
   )

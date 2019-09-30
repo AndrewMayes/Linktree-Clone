@@ -1,8 +1,7 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import axios from 'axios';
 import formValidation from './FormValidation';
 import inputErrors from './InputErrors';
-import { Redirect } from 'react-router-dom';
 
 const Login = () => {
 
@@ -22,7 +21,7 @@ const Login = () => {
       })
       .catch(err => {
         console.log(err);
-        alert('Credentials do not match our records')
+        alert('Credentials do not match our records');
       })
   }
 

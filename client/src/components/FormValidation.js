@@ -45,7 +45,8 @@ const FormValidation = (initialState, validate, reqFunc) => {
     handleBlur,
     values,
     errors,
-    isSubmitting
+    isSubmitting, 
+    setValues
   };
 }
 

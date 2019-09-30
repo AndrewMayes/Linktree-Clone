@@ -3,7 +3,7 @@ const inputErrors = values => {
 
   const names = Object.keys(values);
 
-  names.map(name => {
+  names.forEach(name => {
     switch (name) {
       case 'username':
         if (!values.username) {
@@ -23,6 +23,20 @@ const inputErrors = values => {
         } else if (values.password.length < 6) {
           errors.password = "Password must be at least 6 characters";
         }
+        break;
+      case 'url':
+        if (!values.url) {
+          errors.url = "Required URL";
+        } else if (!/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(values.url)) {
+          errors.url = "Invalid URL";
+        }
+        break;
+      case 'linkTitle':
+        if (!values.linkTitle) {
+          errors.linkTitle = "Required Title";
+        }
+        break;
+      default:
         break;
     }
   });
