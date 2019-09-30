@@ -33,7 +33,7 @@ const Login = () => {
     <form onSubmit={handleSubmit}>
       <div className="login-buttons">
         <input type="text" name="username" value={values.username} onChange={handleChange} placeholder="Username" className="user-input"/>
-        {errors.email && <p className="error-text">{errors.email}</p>}
+        {errors.username && <p className="error-text">{errors.username}</p>}
         <input type="password" name="password" value={values.password} onChange={handleChange} placeholder="Password" autoComplete="password" className="user-input"/>
         {errors.password && <p className="error-text">{errors.password}</p>}
         <button type="submit" disabled={isSubmitting} className="user-submit">Login!</button>
