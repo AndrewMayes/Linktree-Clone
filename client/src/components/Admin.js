@@ -6,13 +6,14 @@ import { Link } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 const Admin = () => {
-  const token = localStorage.getItem('auth-token');
-  const config = {
-    headers: {'auth-token': token}
-  }
   const [username, setUsername] = useState('Andy');
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    const token = localStorage.getItem('auth-token');
+    const config = {
+      headers: {'auth-token': token}
+    }
+
     const getName = () => {
       axios.get(`/users/auth`, config)
         .then(res => {

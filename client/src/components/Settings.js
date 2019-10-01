@@ -14,7 +14,7 @@ const Settings = () => {
       <div className="settings-container">
         <div className="avatar-container">
           <div className="avatar">
-            <input type="image" src={avatar} name="change-avatar" className="change-avatar-style" onClick={onClick}/>
+            <input type="image" alt="avatar" src={avatar} name="change-avatar" className="change-avatar-style" onClick={onClick}/>
           </div>
           <div className="avatar-form">
             <div className="remove-button" onClick={onClick}>Remove</div>

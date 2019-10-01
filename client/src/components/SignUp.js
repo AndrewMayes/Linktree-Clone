@@ -26,7 +26,7 @@ const SignUp = () => {
       })
   }
 
-  const {handleSubmit, handleChange, handleBlur, values, errors, isSubmitting} = formValidation(initialState, inputErrors, axiosFunc);
+  const {handleSubmit, handleChange, values, errors, isSubmitting} = formValidation(initialState, inputErrors, axiosFunc);
 
   return (
     <form onSubmit={handleSubmit}>

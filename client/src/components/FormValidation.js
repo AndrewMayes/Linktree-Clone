@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const FormValidation = (initialState, validate, reqFunc) => {
 
@@ -10,14 +10,13 @@ const FormValidation = (initialState, validate, reqFunc) => {
     if (isSubmitting) {
       const noErrors = Object.keys(errors).length === 0;
       if (noErrors) {
-        console.log("authenticated!", values.email, values.password);
         reqFunc();
         setSubmitting(false);
       } else {
         setSubmitting(false);
       }
     }
-  }, [errors]);
+  }, [errors, isSubmitting, reqFunc]);
 
 
   function handleChange(event) {
@@ -25,11 +24,6 @@ const FormValidation = (initialState, validate, reqFunc) => {
       ...values,
       [event.target.name]: event.target.value
     });
-  }
-
-  function handleBlur() {
-    const validationErrors = validate(values);
-    setErrors(validationErrors);
   }
 
   function handleSubmit(event) {
@@ -42,7 +36,6 @@ const FormValidation = (initialState, validate, reqFunc) => {
   return {
     handleSubmit,
     handleChange,
-    handleBlur,
     values,
     errors,
     isSubmitting, 

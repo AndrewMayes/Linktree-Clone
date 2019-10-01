@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import formValidation from './FormValidation';
 import inputErrors from './InputErrors';
@@ -24,7 +24,7 @@ const NewLink = ({ username }) => {
       })
   }
 
-  const {handleSubmit, handleChange, handleBlur, values, errors, isSubmitting, setValues} = formValidation(initialState, inputErrors, axiosFunc);
+  const {handleSubmit, handleChange, values, errors, isSubmitting, setValues} = formValidation(initialState, inputErrors, axiosFunc);
 
   return (
     <form onSubmit={handleSubmit}>
