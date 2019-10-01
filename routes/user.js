@@ -130,31 +130,27 @@ router.post('/', async (req, res) => {
 // @access Public
 router.post('/auth', async (req, res) => {
   const { username, password } = req.body;
-  const queryUsername = '^' + username + '$'
-
-  // Check if username exists
-  //const userExists = await User.findOne({ username });
+  const queryUsername = '^' + username + '$';
+  const queryEmail = '^' + username + '$';
+  
+  // Check if username or email exists --> Check if password is correct --> Create jwt token --> Send token to header
   const userExists = await User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } });
-  if (!userExists) return res.status(400).send('Username not found');
-
-  // Password is correct
-  const validPass = await bcrypt.compare(password, userExists.password);
-  if (!validPass) return res.status(400).send('Invalid password');
-
-  // Create a token
-  const token = jwt.sign({ _id: userExists._id }, process.env.jwtSecret);
-  /*
-  // Set cookie options
-  const cookieOptions = {
-    httpOnly: true
+  if (!userExists) {
+    const emailExists = await User.findOne({ "email": { '$regex': queryEmail, $options: 'i' } });
+    if (!emailExists) {
+      return res.status(400).send('Username/Email not found');
+    } else {
+      const validPass = await bcrypt.compare(password, emailExists.password);
+      if (!validPass) return res.status(400).send('Invalid password');
+      const token = jwt.sign({ _id: emailExists._id }, process.env.jwtSecret);
+      res.header('auth-token', token).send(token);
+    }
+  } else {
+    const validPass = await bcrypt.compare(password, userExists.password);
+    if (!validPass) return res.status(400).send('Invalid password');
+    const token = jwt.sign({ _id: userExists._id }, process.env.jwtSecret);
+    res.header('auth-token', token).send(token);
   }
-
-  // Add cookie using JWT auth token
-  res.cookie('auth_token', token, cookieOptions)
-  */
-  // Send token to header
-  res.header('auth-token', token).send(token);
-
 });
 
 module.exports = router;
