@@ -130,9 +130,11 @@ router.post('/', async (req, res) => {
 // @access Public
 router.post('/auth', async (req, res) => {
   const { username, password } = req.body;
+  const queryUsername = '^' + username + '$'
 
   // Check if username exists
-  const userExists = await User.findOne({ username });
+  //const userExists = await User.findOne({ username });
+  const userExists = await User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } });
   if (!userExists) return res.status(400).send('Username not found');
 
   // Password is correct
