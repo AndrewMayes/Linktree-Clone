@@ -68,6 +68,22 @@ body {
   overflow: hidden;
 }
 
+.error-msg {
+  color: rgb(204, 0, 0);
+  position: absolute;
+  top: 30vh;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+}
+
+.error-msg p {
+  display: inline;
+  margin: 5px;
+}
+
+
+
 .login-buttons {
   display: flex;
   justify-content: center;
@@ -285,8 +301,12 @@ input {
   color: white;
 }
 
+.error-text::placeholder {
+  color: rgb(204, 0, 0);
+}
+
 .error-text {
-  color: rgb(126, 4, 4);
+  border-color: red;
 }
 
 @media only screen and (max-width: 600px) {
@@ -303,11 +323,22 @@ input {
   .newlink-buttons {
     flex-direction: column;
   }
+
+  .user-input {
+    padding: 20px 50px 20px 50px;
+  }
+
+
+
 }
 
 @media only screen and (max-width: 1250px) {
   .signup-buttons {
     flex-direction: column;
+  }
+
+  .error-msg {
+    top: 10vh;
   }
 }
 
