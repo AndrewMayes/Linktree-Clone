@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 const Admin = () => {
-  const [username, setUsername] = useState('Andy');
+  const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const token = localStorage.getItem('auth-token');

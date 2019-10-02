@@ -82,6 +82,20 @@ body {
   margin: 5px;
 }
 
+.link-error-msg {
+  color: rgb(204, 0, 0);
+  position: absolute;
+  top: 20vh;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+}
+
+.link-error-msg p {
+  display: inline;
+  margin: 5px;
+}
+
 
 
 .login-buttons {
@@ -307,6 +321,11 @@ input {
 
 .error-text {
   border-color: red;
+}
+
+#added {
+  color: white;
+  font-size: 30px;
 }
 
 @media only screen and (max-width: 600px) {

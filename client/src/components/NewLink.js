@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import formValidation from './FormValidation';
 import inputErrors from './InputErrors';
@@ -10,32 +10,42 @@ const NewLink = ({ username }) => {
     url: ''
   };
 
+  const [added, setAdded] = useState(false);
+
   const axiosFunc = () => {
+    setAdded(false);
     axios.patch(`/users/${username}`, values )
       .then(res => {
-        console.log(res)
-        console.log(res.data);
         // Reset to initial state
         setValues(initialState);
+
+        setAdded(true);
+
+        // Notify user that post was successful, then removes the notification after 5 sec
+        setTimeout(() => setAdded(false), 5000);
       })
       .catch(err => {
         console.log(err);
-        alert('Something went wrong')
       })
   }
 
   const {handleSubmit, handleChange, values, errors, isSubmitting, setValues} = formValidation(initialState, inputErrors, axiosFunc);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="newlink-buttons">
-        <input type="text" name="linkTitle" value={values.linkTitle} onChange={handleChange} placeholder="Title" className="user-input"/>
-        {errors.linkTitle && <p className="error-text">{errors.linkTitle}</p>}
-        <input type="text" name="url" value={values.url} onChange={handleChange} placeholder="URL" className="user-input"/>
-        {errors.url && <p className="error-text">{errors.url}</p>}
-        <button type="submit" disabled={isSubmitting} className="user-submit">Submit</button>
+    <>
+      <div className="link-error-msg">
+        <p id="added">{added ? 'New Link Added To Your Linktree!' : ''}</p>
+        <p>{errors.linkTitle ? errors.linkTitle : ''}</p>
+        <p>{errors.url ? errors.url : ''}</p>
       </div>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <div className="newlink-buttons">
+          <input type="text" name="linkTitle" value={values.linkTitle} onChange={handleChange} placeholder={'Title'} className={errors.linkTitle ? 'user-input error-text' : 'user-input'}/>
+          <input type="text" name="url" value={values.url} onChange={handleChange} placeholder={'URL'} className={errors.url ? 'user-input error-text' : 'user-input'}/>
+          <button type="submit" disabled={isSubmitting} className="user-submit">Submit</button>
+        </div>
+      </form>
+    </>
   )
 }
 
