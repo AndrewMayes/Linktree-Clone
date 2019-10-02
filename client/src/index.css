@@ -347,7 +347,9 @@ input {
     padding: 20px 50px 20px 50px;
   }
 
-
+  #added {
+    font-size: 15px;
+  }
 
 }
 
