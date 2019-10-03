@@ -1,17 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create Link Schema
-const LinkSchema = new Schema({
-  url: {
-    type: String,
-    required: true
-  },
-  linkTitle: {
-    type: String,
-    required: true
-  }
-});
+// Link Schema
+const LinkSchema = require('./Link').schema;
 
 // Create User Schema
 const UserSchema = new Schema({
