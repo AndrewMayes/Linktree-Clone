@@ -16,7 +16,7 @@ const Login = () => {
   const axiosFunc = () => {
     setUserNotFound(false);
     setWrongPassword(false);
-    axios.post(`/users/auth`, values )
+    axios.post(`/users/login`, values )
       .then(res => {
         // Save JWT token in localStorage
         localStorage.setItem('auth-token', res.data);

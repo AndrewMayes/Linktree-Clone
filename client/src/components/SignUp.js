@@ -17,7 +17,7 @@ const SignUp = () => {
   const axiosFunc = () => {
     setEmailExists(false);
     setUserExists(false);
-    axios.post(`/users/`, values )
+    axios.post(`/users/register`, values )
       .then(res => {         
         // Save JWT token in localStorage
         localStorage.setItem('auth-token', res.data);

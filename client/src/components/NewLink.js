@@ -10,19 +10,24 @@ const NewLink = ({ username }) => {
     url: ''
   };
 
+  const token = localStorage.getItem('auth-token');
+  const config = {
+    headers: {'auth-token': token}
+  }
+
   const [added, setAdded] = useState(false);
 
   const axiosFunc = () => {
     setAdded(false);
-    axios.patch(`/users/${username}`, values )
+    axios.patch(`/users/${username}`, values, config)
       .then(res => {
         // Reset to initial state
         setValues(initialState);
 
         setAdded(true);
 
-        // Notify user that post was successful, then removes the notification after 5 sec
-        setTimeout(() => setAdded(false), 5000);
+        // Notify user that post was successful, then removes the notification after 3 sec
+        setTimeout(() => setAdded(false), 3000);
       })
       .catch(err => {
         console.log(err);

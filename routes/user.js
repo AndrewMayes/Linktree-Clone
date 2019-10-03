@@ -10,35 +10,23 @@ require('dotenv').config();
 const User = require('../models/User');
 
 // @route GET /users
-// @desc Get user
+// @desc Get all users
 // @access Public
 router.get('/', (req, res) => {
   User.find()
     .sort({ date: -1 })
+    .select('-password -email')
     .then(user => res.json(user))
-    .catch(err => res.status(400).json('Error: ' + err))
+    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // @route GET /users/admin
-// @desc Get user
-// @access Private
-router.get('/admin', verify, (req, res) => {
-  //res.send(req.user)
-  /*
-  const user = req.user;
-  //res.send(user)
-  User.findById(user._id)
-    .then(user => res.json(user))
-    */
-});
-
-// @route GET /users/auth/
 // @desc Get user data
 // @access Private
-router.get('/auth', verify, (req, res) => {
+router.get('/admin', verify, (req, res) => {
   User.findById(req.user._id)
-  .select('-password')
-  .then(user => res.json(user))
+  .select('-password -email')
+  .then(user => res.send(user));
 });
 
 // @route GET /users/:username
@@ -48,17 +36,19 @@ router.get('/:username', (req, res) => {
   const username = req.params.username
   const queryUsername = '^' + username + '$'
   User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
+    .select('-password -email')
     .then(user => res.json(user))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // @route PATCH /users/:username
 // @desc Add a link a specific user's links
-// @access Public
-router.patch('/:username', (req, res) => {
+// @access Private
+router.patch('/:username', verify, (req, res) => {
   const username = req.params.username;
   const queryUsername = '^' + username + '$';
   User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
+    .select('-password -email')
     .then(user => {
       const url = req.body.url;
       const linkTitle = req.body.linkTitle;
@@ -70,6 +60,7 @@ router.patch('/:username', (req, res) => {
     .catch(err => res.status(400).json('Error: ' + err))
 });
 
+/*
 // @route DELETE /users/:username
 // @desc Delete a user by username
 // @access Public
@@ -79,17 +70,17 @@ router.delete('/:username', (req, res) => {
     .then(() => res.json({success: true}))
     .catch(err => res.status(400).json('Error: ' + err));
 });
+*/
 
 
-
-// Auth routes
+// Login/Register routes
 
 const jwtSecret = process.env.jwtSecret;
 
-// @route POST /users
+// @route POST /users/register
 // @desc Create a user (Register)
 // @access Public
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
 
   const { username, email, password } = req.body;
 
@@ -125,10 +116,10 @@ router.post('/', async (req, res) => {
   } 
 });
 
-// @route POST /users/auth
+// @route POST /users/login
 // @desc Auth user (Login)
 // @access Public
-router.post('/auth', async (req, res) => {
+router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   const queryUsername = '^' + username + '$';
   const queryEmail = '^' + username + '$';

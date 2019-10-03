@@ -15,7 +15,7 @@ const Admin = () => {
     }
 
     const getName = () => {
-      axios.get(`/users/auth`, config)
+      axios.get(`/users/admin`, config)
         .then(res => {
           setUsername(res.data.username);
           setLoading(false);
