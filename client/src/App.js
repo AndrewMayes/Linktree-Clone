@@ -5,17 +5,16 @@ import NotFound from './components/NotFound';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
-import Admin from './components/Admin';
 import Footer from './components/Footer';
 import Settings from './components/Settings';
-import Edit from './components/Edit';
+import State from './components/State';
 
 const App = () => {
 
   const isAuth = {
     token: localStorage.getItem('auth-token')
   }
-
+  
   return (
     <Router>
       <div>
@@ -24,7 +23,7 @@ const App = () => {
             isAuth.token ? <Redirect to='/admin'/> : <Home />
           )} />
           <Route path="/admin" render={() => (
-            isAuth.token ? <Admin /> : <Redirect to='/' />
+            isAuth.token ? <State component={'admin'}/> : <Redirect to='/' />
           )}/>
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
@@ -32,7 +31,7 @@ const App = () => {
             isAuth.token ? <Settings /> : <Redirect to='/' />
           )} />
           <Route path="/edit" render={() => (
-            isAuth.token ? <Edit /> : <Redirect to='/' />
+            isAuth.token ? <State component={'edit'}/> : <Redirect to='/' />
           )} />
           {/* All other paths need to remain above the username path */}
           <Route path="/:username" component={UserLinkTree} />
