@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Admin from './components/Admin';
 import Footer from './components/Footer';
 import Settings from './components/Settings';
+import Edit from './components/Edit';
 
 const App = () => {
 
@@ -29,6 +30,9 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/settings" render={() => (
             isAuth.token ? <Settings /> : <Redirect to='/' />
+          )} />
+          <Route path="/edit" render={() => (
+            isAuth.token ? <Edit /> : <Redirect to='/' />
           )} />
           {/* All other paths need to remain above the username path */}
           <Route path="/:username" component={UserLinkTree} />
