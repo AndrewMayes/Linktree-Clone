@@ -30,6 +30,30 @@ body {
   color: black;
 }
 
+.edit-link-container {
+  background-color: white;
+  font-weight: 700;
+  margin-top: 10px;
+  cursor: default;
+  display: block;
+  border-style: solid;
+  border-color: black;
+  margin-bottom: 12px;
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.svg {
+  height: 60px;
+  width: 60px;
+}
+
+.edit-linkTitle {
+  margin-bottom: 20px;
+}
+
 .avatarStyle {
   border-radius: 50%;
   width: 90px;
@@ -326,6 +350,11 @@ input {
 #added {
   color: white;
   font-size: 30px;
+}
+
+.delete-button {
+  float: right;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {

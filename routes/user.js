@@ -63,14 +63,40 @@ router.patch('/:username', verify, (req, res) => {
 /*
 // @route DELETE /users/:username
 // @desc Delete a user by username
-// @access Public
-router.delete('/:username', (req, res) => {
-  const username = req.params.username
-  User.deleteOne({ "username": new RegExp(username, "i") })
+// @access Private
+router.delete('/:username', verify, (req, res) => {
+  const username = req.params.username;
+  const queryUsername = '^' + username + '$';
+  User.deleteOne({ "username": { '$regex': queryUsername, $options: 'i' } })
     .then(() => res.json({success: true}))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 */
+
+// @route DELETE /users/:username/link
+// @desc Delete a link
+// @access Private
+router.patch('/:username/link', verify, (req, res) => {
+  const username = req.params.username;
+  const { _id } = req.body;
+  const queryUsername = '^' + username + '$';
+
+  User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
+    .select('-password -email')
+    .then(user => {
+
+      user.links.forEach((link, index) => {
+        
+        if (link._id.toString() === _id.toString()) {
+          user.links.splice(index, 1);
+          user.save()
+            .then(user => res.json(user))
+            .catch(err => res.status(400).json('Error: ' + err));
+        }
+      });
+    })
+    .catch(err => res.status(400).json('Error: ' + err))
+});
 
 
 // Login/Register routes

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Links = ({ link }) => {
+const Link = ({ link }) => {
   return (
     <div className="link">
       <a className="linkContainer" href={link.url} target="_blank" rel="noopener noreferrer">{link.linkTitle}</a>
@@ -8,4 +8,4 @@ const Links = ({ link }) => {
   )
 }
 
-export default Links
+export default Link

@@ -27,7 +27,7 @@ const NewLink = ({ username }) => {
         setAdded(true);
 
         // Notify user that post was successful, then removes the notification after 3 sec
-        setTimeout(() => setAdded(false), 3000);
+        setTimeout(() => setAdded(false), 1500);
       })
       .catch(err => {
         console.log(err);
