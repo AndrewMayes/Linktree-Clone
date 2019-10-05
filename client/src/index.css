@@ -350,12 +350,44 @@ input {
   position: relative;
 }
 
-.edit-linkTitle-title {
+.edit-linkTitle-wrap {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 550px;
+}
+
+.edit-url {
+  position: relative;
+}
+
+.edit-url-wrap {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 530px;
+}
+
+.url-error {
+  display: inline-block;
+  color: rgb(204, 0, 0);
+  font-weight: 100;
+  position: absolute;
+  float: left;
+}
+
+.error-url-text::placeholder {
+  color: rgb(204, 0, 0);
+}
+
+.error-url-text {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  border-bottom-color: red;
 }
 
 .edit-link-input {
@@ -374,7 +406,7 @@ input {
   position: absolute;
   right: 10px;
   cursor: pointer;
-  margin-top: 25px;
+  margin-top: 15px;
   margin-bottom: 25px;
 }
 
