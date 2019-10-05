@@ -13,7 +13,8 @@ body {
 
 .linksList {
   display: block;
-  color: red;
+  color: black;
+  text-align: center;
   max-width: 680px;
   position: center;
   margin: auto;
@@ -270,37 +271,6 @@ input {
   border-bottom: 3px solid #39e09b;
 }
 
-.settings-container {
-  background-color: white;
-  height: 500px;
-  width: 470px;
-  margin: auto;
-  margin-top: 50px;
-  border-radius: 30px;
-}
-
-.avatar-container {
-  background-color: lightgray;
-}
-
-.avatar {
-  display: inline-block;
-  margin: 20px 10px 10px 20px;
-}
-
-.avatar-form {
-  display: inline-block;
-  width: 50%;
-  margin: 0px 0px 0px 40px;
-}
-
-.change-avatar-style {
-  border-radius: 3px;
-  width: 82px;
-  height: 82px;
-  cursor: pointer;
-}
-
 .remove-button {
   position: relative;
   border: 2px solid rgb(31, 28, 28);
@@ -370,14 +340,6 @@ input {
   max-width: 530px;
 }
 
-.url-error {
-  display: inline-block;
-  color: rgb(204, 0, 0);
-  font-weight: 100;
-  position: absolute;
-  float: left;
-}
-
 .error-url-text::placeholder {
   color: rgb(204, 0, 0);
 }
@@ -414,6 +376,61 @@ input {
   position: absolute;
   display: inline-block;
   padding-left: 5px;
+  cursor: pointer;
+}
+
+.settings-container {
+  background-color: white;
+  height: 500px;
+  width: 470px;
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.avatar-container {
+  border: 1px solid pink;
+}
+
+.avatar {
+  display: inline-block;
+  margin: 20px 10px 10px 20px;
+}
+
+.avatar-form {
+  display: inline-block;
+  width: 50%;
+  margin: 0px 0px 0px 40px;
+}
+
+.change-avatar-style {
+  border-radius: 3px;
+  width: 82px;
+  height: 82px;
+  cursor: pointer;
+}
+
+.color-container {
+  border: 1px solid pink;
+  text-align: center;
+  padding: 10px;
+}
+
+.themes-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 28px;
+  justify-items: center;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 2px;
+  padding: 20px;
+  height: 41px;
+  width: 41px;
   cursor: pointer;
 }
 

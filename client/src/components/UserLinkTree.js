@@ -38,7 +38,7 @@ const UserLinkTree = (props) => {
     : (<>
         <UserHeader username={username}/>
         <div className="linksList">
-          {(links !== []) ? (links.map(link => <Link key={link._id} link={link}/>)) : (<h2>no links yet</h2>)}
+          {(links.length > 0) ? (links.map(link => <Link key={link._id} link={link}/>)) : (<h1>User's Linktree is empty!</h1>)}
         </div>
       </>)
   )

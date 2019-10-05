@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import UserHeader from './UserHeader';
-import Link from './Link';
 import ClipLoader from 'react-spinners/ClipLoader';
-import UserLinkTree from './UserLinkTree';
 import EditableLink from './EditableLink';
 import AdminHeader from './AdminHeader';
 
@@ -39,7 +36,7 @@ const Edit = ({ username }) => {
     : (<>
         <AdminHeader edit={'active'}/>
         <div className="linksList">
-          {(links !== []) ? (links.map(link => <EditableLink key={link._id} id={link._id} link={link} username={username} rerender={rerender}/>)) : (<h2>no links yet</h2>)}
+          {(links.length > 0) ? (links.map(link => <EditableLink key={link._id} id={link._id} link={link} username={username} rerender={rerender}/>)) : (<h1>Your Linktree is empty.</h1>)}
         </div>
       </>)
   )

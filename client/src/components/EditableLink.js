@@ -37,7 +37,7 @@ const EditableLink = ({ id, username, link, rerender }) => {
       })
   }
 
-  const {handleSubmit, handleChange, values, errors, isSubmitting, setValues} = formValidation(initialState, inputErrors, axiosFunc);
+  const {handleSubmit, handleChange, values, errors} = formValidation(initialState, inputErrors, axiosFunc);
 
   const deleteLink = () => {
     axios.patch(`/users/${username}/deletelink`, {_id: id}, config)
