@@ -73,10 +73,10 @@ router.delete('/:username', verify, (req, res) => {
 });
 */
 
-// @route DELETE /users/:username/link
+// @route PATCH /users/:username/deletelink
 // @desc Delete a link
 // @access Private
-router.patch('/:username/link', verify, (req, res) => {
+router.patch('/:username/deletelink', verify, (req, res) => {
   const username = req.params.username;
   const { _id } = req.body;
   const queryUsername = '^' + username + '$';
@@ -89,6 +89,34 @@ router.patch('/:username/link', verify, (req, res) => {
         
         if (link._id.toString() === _id.toString()) {
           user.links.splice(index, 1);
+          user.save()
+            .then(user => res.json(user))
+            .catch(err => res.status(400).json('Error: ' + err));
+        }
+      });
+    })
+    .catch(err => res.status(400).json('Error: ' + err))
+});
+
+// @route PATCH /users/:username/link
+// @desc Update a link
+// @access Private
+router.patch('/:username/editlink', verify, (req, res) => {
+  const username = req.params.username;
+  const { _id } = req.body;
+  const queryUsername = '^' + username + '$';
+
+  User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
+    .select('-password -email')
+    .then(user => {
+
+      user.links.forEach((link, index) => {
+        
+        if (link._id.toString() === _id.toString()) {
+          const url = req.body.url;
+          const linkTitle = req.body.linkTitle;
+
+          user.links[index] = {"_id": _id, "url": url, "linkTitle": linkTitle}
           user.save()
             .then(user => res.json(user))
             .catch(err => res.status(400).json('Error: ' + err));

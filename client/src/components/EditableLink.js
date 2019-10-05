@@ -1,17 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import formValidation from './FormValidation';
+import inputErrors from './InputErrors';
 import editSVG from '../imgs/edit.svg';
+import deleteSVG from '../imgs/trash.svg';
 import ReactSVG from 'react-svg';
 
 const EditableLink = ({ id, username, link, rerender }) => {
+
+  const initialState = {
+    _id: id,
+    linkTitle: link.linkTitle,
+    url: link.url
+  };
 
   const token = localStorage.getItem('auth-token');
   const config = {
     headers: {'auth-token': token}
   }
 
+  const [editTitle, setEditTitle] = useState(false);
+
+  const axiosFunc = () => {
+    axios.patch(`/users/${username}/editlink`, values, config)
+      .then(res => {
+        toggleEditTitle();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  const {handleSubmit, handleChange, values, errors, isSubmitting, setValues} = formValidation(initialState, inputErrors, axiosFunc);
+
   const deleteLink = () => {
-    axios.patch(`/users/${username}/link`, {_id: id}, config)
+    axios.patch(`/users/${username}/deletelink`, {_id: id}, config)
     .then(res => {
       rerender();
     })
@@ -20,15 +43,27 @@ const EditableLink = ({ id, username, link, rerender }) => {
     })
   }
 
+  const toggleEditTitle = () => {
+    setEditTitle(!editTitle);
+  }
+
   return (
     <div className="edit-link-container">
       <span className="delete-button" onClick={deleteLink}>
-        X
+        <ReactSVG src={deleteSVG} />
       </span>
       <div className="edit-linkTitle">
-        {link.linkTitle}
-        <span className="svg">
-          <ReactSVG src={editSVG} />
+        <div className="edit-linkTitle-title">
+        {(editTitle) ? 
+          <form onSubmit={handleSubmit}>
+            <div>
+              <input type="text" name="linkTitle" value={values.linkTitle} onChange={handleChange} autoFocus="autofocus" onBlur={handleSubmit} placeholder={'Title'} className={errors.linkTitle ? 'edit-link-input error-text' : 'edit-link-input'}/>
+            </div>
+          </form> 
+          : values.linkTitle}
+        </div>
+        <span className="edit-button" onClick={toggleEditTitle}>
+          {(editTitle) ? '' : <ReactSVG src={editSVG} />}
         </span>
       </div>
       <div className="edit-url">
