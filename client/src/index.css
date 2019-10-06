@@ -4,16 +4,30 @@
 }
 
 html {
-  background-color: #39e09b;
+  height: 100%;
 }
 
 body {
   margin: 0;
+  height: 100%;
+}
+
+h2 {
+  color: #1f1c1c
+}
+
+.green-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #39e09b;
 }
 
 .linksList {
   display: block;
-  color: black;
+  color: #1f1c1c;
   text-align: center;
   max-width: 680px;
   position: center;
@@ -23,12 +37,12 @@ body {
 .linkContainer {
   display: block;
   border-style: solid;
-  border-color: black;
+  border-color: #1f1c1c;
   margin-bottom: 12px;
   text-align: center;
   padding: 17px;
   text-decoration: none;
-  color: black;
+  color: #1f1c1c;
 }
 
 .avatarStyle {
@@ -306,12 +320,12 @@ input {
   cursor: default;
   display: block;
   border-style: solid;
-  border-color: black;
+  border-color: #1f1c1c;
   margin-bottom: 12px;
   text-align: center;
   padding: 20px;
   text-decoration: none;
-  color: black;
+  color: #1f1c1c;
 
 }
 
@@ -424,14 +438,46 @@ input {
   justify-items: center;
 }
 
+.theme {
+  background-color: pink;
+
+  flex-grow: 1;
+}
+
 .box {
   background-color: #444;
   color: #fff;
   border-radius: 2px;
-  padding: 20px;
-  height: 41px;
-  width: 41px;
+  height: 81px;
+  width: 81px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  User Themes
+*/
+.theme-2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #1f1c1c;
+}
+
+.theme-2 .link:hover {
+  background-color: white;
+}
+
+.theme-2 .linkContainer {
+  border-color: #39e09b;
+  color: #39e09b;
+}
+
+.theme-2 h2  {
+  color: #39e09b;
 }
 
 @media only screen and (max-width: 600px) {

@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Footer from './components/Footer';
-import Settings from './components/Settings';
 import State from './components/State';
 
 const App = () => {
@@ -28,7 +27,7 @@ const App = () => {
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/settings" render={() => (
-            isAuth.token ? <Settings /> : <Redirect to='/' />
+            isAuth.token ? <State component={'settings'}/> : <Redirect to='/' />
           )} />
           <Route path="/edit" render={() => (
             isAuth.token ? <State component={'edit'}/> : <Redirect to='/' />

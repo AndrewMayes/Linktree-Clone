@@ -126,6 +126,24 @@ router.patch('/:username/editlink', verify, (req, res) => {
     .catch(err => res.status(400).json('Error: ' + err))
 });
 
+// @route PATCH /users/:username/theme
+// @desc Update a user's Linktree theme
+// @access Private
+router.patch('/:username/theme', verify, (req, res) => {
+  const username = req.params.username;
+  const queryUsername = '^' + username + '$';
+  User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
+    .select('-password -email')
+    .then(user => {
+      const theme = req.body.theme;
+      user.theme = parseInt(theme);
+      user.save()
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err))
+});
+
 
 // Login/Register routes
 

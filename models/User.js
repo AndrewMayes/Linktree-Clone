@@ -27,6 +27,10 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  theme: {
+    type: Number,
+    default: 1
+  },
   links: {
     type: [LinkSchema]
   }

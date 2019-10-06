@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const Home = () => {
   return (
-    <div className="homepage">
+    <div className="green-container">
       <div className="buttons">
         <Link to='/login' className="sign-in-button">
           <p>Log In!</p>

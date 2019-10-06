@@ -38,7 +38,7 @@ const Login = () => {
   const {handleSubmit, handleChange, values, errors, isSubmitting} = formValidation(initialState, inputErrors, axiosFunc);
 
   return (
-    <>
+    <div className="green-container">
       <div className="error-msg">
         <p>{userNotFound ? 'Username/Email not found' : ''}</p>
         <p>{wrongPassword ? 'Invalid Password' : ''}</p>
@@ -52,7 +52,7 @@ const Login = () => {
           <button type="submit" disabled={isSubmitting} className="user-submit">Login!</button>
         </div>
       </form>
-    </>
+    </div>
   )
 }
 

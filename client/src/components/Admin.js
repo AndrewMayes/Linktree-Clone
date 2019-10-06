@@ -4,7 +4,8 @@ import AdminHeader from './AdminHeader';
 import { Link } from 'react-router-dom';
 
 const Admin = ({ username }) => {
-  return (<>
+  return (
+    <>
       <AdminHeader admin={'active'}/>
       <div>
         

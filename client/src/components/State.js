@@ -3,6 +3,7 @@ import Admin from './Admin';
 import Edit from './Edit';
 import axios from 'axios';
 import ClipLoader from 'react-spinners/ClipLoader';
+import Settings from './Settings';
 
 const State = ({ component }) => {
 
@@ -33,14 +34,16 @@ const State = ({ component }) => {
         return <Admin username={username} />
       case 'edit':
         return <Edit username={username} />
+      case 'settings':
+        return <Settings username={username} />
       default:
         return null;
     }
   }
 
-  return (loading) ? <div className="loader"><ClipLoader sizeUnit={"px"} size={150} color={'rgb(31, 28, 28)'} loading={true}/></div> :
+  return (loading) ? <div className="green-container"><div className="loader"><ClipLoader sizeUnit={"px"} size={150} color={'rgb(31, 28, 28)'} loading={true}/></div></div> :
   (
-    <div>
+    <div className="green-container">
       {toggle(component)}
     </div>
   )

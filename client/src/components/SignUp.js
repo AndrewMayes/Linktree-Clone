@@ -39,7 +39,7 @@ const SignUp = () => {
   const {handleSubmit, handleChange, values, errors, isSubmitting} = formValidation(initialState, inputErrors, axiosFunc);
 
   return (
-    <>
+    <div className="green-container">
       <div className="error-msg">
         <p>{userExists ? 'Username already exists' : ''}</p>
         <p>{emailExists ? 'Email already exists' : ''}</p>
@@ -55,7 +55,7 @@ const SignUp = () => {
           <button type="submit" disabled={isSubmitting} className="user-submit">Sign Up!</button>
         </div>
       </form>
-    </>
+    </div>
   )
 }
 

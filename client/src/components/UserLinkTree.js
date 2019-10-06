@@ -11,6 +11,7 @@ const UserLinkTree = (props) => {
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [theme, setTheme] = useState(1);
 
   useEffect(() => {
     const getLinks = () => {
@@ -18,6 +19,7 @@ const UserLinkTree = (props) => {
         .then(res => {
           setLinks(res.data.links);
           setUsername(res.data.username);
+          setTheme(res.data.theme);
           setLoading(false);
         })
         .catch(err => {
@@ -33,14 +35,14 @@ const UserLinkTree = (props) => {
   // Return loading UI while waiting for GET request, then load user's page once the request goes through.
   // Return NotFound component if GET request does not find the searched username
   return ( 
-    (loading && !notFound) ? <div className="loader"><ClipLoader sizeUnit={"px"} size={150} color={'rgb(31, 28, 28)'} loading={true}/></div>
+    (loading && !notFound) ? <div className="green-container"><div className="loader"><ClipLoader sizeUnit={"px"} size={150} color={'rgb(31, 28, 28)'} loading={true}/></div></div>
     : (notFound) ? <NotFound /> 
-    : (<>
+    : (<div className={(theme === 1) ? 'green-container' : `theme-${theme}`}>
         <UserHeader username={username}/>
         <div className="linksList">
           {(links.length > 0) ? (links.map(link => <Link key={link._id} link={link}/>)) : (<h1>User's Linktree is empty!</h1>)}
         </div>
-      </>)
+      </div>)
   )
 }
 

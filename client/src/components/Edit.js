@@ -32,7 +32,7 @@ const Edit = ({ username }) => {
   }, [username, deleted]);
 
   return ( 
-    (loading) ? <div className="loader"><ClipLoader sizeUnit={"px"} size={150} color={'rgb(31, 28, 28)'} loading={true}/></div>
+    (loading) ? <div className="green-container"><div className="loader"><ClipLoader sizeUnit={"px"} size={150} color={'rgb(31, 28, 28)'} loading={true}/></div></div>
     : (<>
         <AdminHeader edit={'active'}/>
         <div className="linksList">
