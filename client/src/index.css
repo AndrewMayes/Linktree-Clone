@@ -438,14 +438,7 @@ input {
   justify-items: center;
 }
 
-.theme {
-  background-color: pink;
-
-  flex-grow: 1;
-}
-
 .box {
-  background-color: #444;
   color: #fff;
   border-radius: 2px;
   height: 81px;
@@ -455,29 +448,8 @@ input {
   flex-direction: column;
 }
 
-/*
-  User Themes
-*/
-.theme-2 {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #1f1c1c;
-}
-
-.theme-2 .link:hover {
-  background-color: white;
-}
-
-.theme-2 .linkContainer {
-  border-color: #39e09b;
-  color: #39e09b;
-}
-
-.theme-2 h2  {
-  color: #39e09b;
+.active-theme {
+  border-bottom: 5px solid #1f1c1c;
 }
 
 @media only screen and (max-width: 600px) {

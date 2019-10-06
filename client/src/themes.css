@@ -1,0 +1,111 @@
+/*
+  User Themes
+*/
+
+.theme-1-thumb{
+  background-color: #39e09b;
+  flex-grow: 1;
+}
+
+.theme-2-thumb{
+  background-color: #39e09b;
+  flex-grow: 1;
+}
+
+.theme-3-thumb{
+  background-color: #39e09b;
+  flex-grow: 1;
+}
+
+.theme-4-thumb{
+  background-color: #39e09b;
+  flex-grow: 1;
+}
+
+.theme-5-thumb{
+  background-color: #39e09b;
+  flex-grow: 1;
+}
+
+.theme-6-thumb{
+  background-color: #39e09b;
+  flex-grow: 1;
+}
+
+.theme-7-thumb{
+  background-color: #39e09b;
+  flex-grow: 1;
+}
+
+.theme-8-thumb{
+  background-color: #39e09b;
+  flex-grow: 1;
+}
+
+.dot {
+  background-color: blue;
+  height: 50%;
+  width: 50%;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 22px;
+}
+
+/*
+  Theme 1 is applied by default
+*/
+
+/*
+  Theme 2
+*/
+.theme-2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #1f1c1c;
+}
+
+.theme-2 .link {
+  background-color: #39e09b;
+}
+
+.theme-2 .link:hover {
+  background-color: white;
+}
+
+.theme-2 .linkContainer {
+  border-color: #39e09b;
+  color: #1f1c1c;
+}
+
+.theme-2 h2  {
+  color: #39e09b;
+}
+
+/*
+  Theme 3
+*/
+.theme-3 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+.theme-3 .link:hover {
+  background-color: white;
+}
+
+.theme-3 .linkContainer {
+  border-color: #39e09b;
+  color: #39e09b;
+  background-color: pink;
+}
+
+.theme-3 h2  {
+  color: #39e09b;
+}

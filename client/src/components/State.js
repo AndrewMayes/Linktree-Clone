@@ -9,6 +9,8 @@ const State = ({ component }) => {
 
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState(1);
+
   useEffect(() => {
     const token = localStorage.getItem('auth-token');
     const config = {
@@ -19,6 +21,7 @@ const State = ({ component }) => {
       axios.get(`/users/admin`, config)
         .then(res => {
           setUsername(res.data.username);
+          setTheme(res.data.theme);
           setLoading(false);
         })
         .catch(err => {
@@ -35,7 +38,7 @@ const State = ({ component }) => {
       case 'edit':
         return <Edit username={username} />
       case 'settings':
-        return <Settings username={username} />
+        return <Settings username={username} activeTheme={theme} />
       default:
         return null;
     }

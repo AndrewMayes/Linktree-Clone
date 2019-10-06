@@ -4,6 +4,7 @@ import UserHeader from './UserHeader';
 import Link from './Link';
 import NotFound from './NotFound';
 import ClipLoader from 'react-spinners/ClipLoader';
+import '../themes.css';
 
 const UserLinkTree = (props) => {
 
