@@ -1,54 +1,93 @@
 /*
-  User Themes
+  Settings component Theme thumbnails
 */
 
 .theme-1-thumb{
   background-color: #39e09b;
   flex-grow: 1;
+  border-radius: 10px;
+}
+
+.theme-1-thumb .dot {
+  background-color: #1f1c1c;
 }
 
 .theme-2-thumb{
-  background-color: #39e09b;
+  background-color: #1f1c1c;
   flex-grow: 1;
+  border-radius: 10px;
+}
+
+.theme-2-thumb .dot {
+  background-color: #39e09b;
 }
 
 .theme-3-thumb{
-  background-color: #39e09b;
+  background-color: #1f1c1c;
   flex-grow: 1;
+  border-radius: 10px;
+}
+
+.theme-3-thumb .dot {
+  background-color: #39e09b;
 }
 
 .theme-4-thumb{
-  background-color: #39e09b;
+  background-color: #1f1c1c;
   flex-grow: 1;
+  border-radius: 10px;
+}
+
+.theme-4-thumb .dot {
+  background-color: #39e09b;
 }
 
 .theme-5-thumb{
-  background-color: #39e09b;
+  background-color: #1f1c1c;
   flex-grow: 1;
+  border-radius: 10px;
+}
+
+.theme-5-thumb .dot {
+  background-color: #39e09b;
 }
 
 .theme-6-thumb{
-  background-color: #39e09b;
+  background-color: #1f1c1c;
   flex-grow: 1;
+  border-radius: 10px;
+}
+
+.theme-6-thumb .dot {
+  background-color: #39e09b;
 }
 
 .theme-7-thumb{
-  background-color: #39e09b;
+  background-color: #1f1c1c;
   flex-grow: 1;
+  border-radius: 10px;
+}
+
+.theme-7-thumb .dot {
+  background-color: #39e09b;
 }
 
 .theme-8-thumb{
-  background-color: #39e09b;
+  background-color: #1f1c1c;
   flex-grow: 1;
+  border-radius: 10px;
+}
+
+.theme-8-thumb .dot {
+  background-color: #39e09b;
 }
 
 .dot {
-  background-color: blue;
   height: 50%;
   width: 50%;
   border-radius: 50%;
   display: inline-block;
-  margin-top: 22px;
+  margin-top: 20.25px;
 }
 
 /*
@@ -107,5 +146,150 @@
 }
 
 .theme-3 h2  {
+  color: #39e09b;
+}
+
+/*
+  Theme 4
+*/
+.theme-4 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #1f1c1c;
+}
+
+.theme-4 .link {
+  background-color: #39e09b;
+}
+
+.theme-4 .link:hover {
+  background-color: white;
+}
+
+.theme-4 .linkContainer {
+  border-color: #39e09b;
+  color: #1f1c1c;
+}
+
+.theme-4 h2  {
+  color: #39e09b;
+}
+
+/*
+  Theme 5
+*/
+.theme-5 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #1f1c1c;
+}
+
+.theme-5 .link {
+  background-color: #39e09b;
+}
+
+.theme-5 .link:hover {
+  background-color: white;
+}
+
+.theme-5 .linkContainer {
+  border-color: #39e09b;
+  color: #1f1c1c;
+}
+
+.theme-5 h2  {
+  color: #39e09b;
+}
+
+/*
+  Theme 6
+*/
+.theme-6 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #1f1c1c;
+}
+
+.theme-6 .link {
+  background-color: #39e09b;
+}
+
+.theme-6 .link:hover {
+  background-color: white;
+}
+
+.theme-6 .linkContainer {
+  border-color: #39e09b;
+  color: #1f1c1c;
+}
+
+.theme-6 h2  {
+  color: #39e09b;
+}
+
+/*
+  Theme 7
+*/
+.theme-7 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #1f1c1c;
+}
+
+.theme-7 .link {
+  background-color: #39e09b;
+}
+
+.theme-7 .link:hover {
+  background-color: white;
+}
+
+.theme-7 .linkContainer {
+  border-color: #39e09b;
+  color: #1f1c1c;
+}
+
+.theme-7 h2  {
+  color: #39e09b;
+}
+
+/*
+  Theme 8
+*/
+.theme-8 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #1f1c1c;
+}
+
+.theme-8 .link {
+  background-color: #39e09b;
+}
+
+.theme-8 .link:hover {
+  background-color: white;
+}
+
+.theme-8 .linkContainer {
+  border-color: #39e09b;
+  color: #1f1c1c;
+}
+
+.theme-8 h2  {
   color: #39e09b;
 }

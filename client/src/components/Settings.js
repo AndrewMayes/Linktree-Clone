@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import AdminHeader from './AdminHeader';
 import Theme from './Theme';
 import avatar from '../imgs/default.png';
 
-const Settings = ({ username, activeTheme }) => {
+const Settings = ({ username }) => {
 
   const onClick = () => {
     console.log('clickeee');
   }
 
-  const [newTheme, setNewTheme] = useState(activeTheme);
+  const [newTheme, setNewTheme] = useState(0);
 
   const rerender = (theme) => {
     setNewTheme(theme);
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem('auth-token');
+    const config = {
+      headers: {'auth-token': token}
+    }
+
+    const getTheme = () => {
+      axios.get(`/users/admin`, config)
+        .then(res => {
+          setNewTheme(res.data.theme);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
+    getTheme();
+  }, [newTheme])
 
   return (
     <>

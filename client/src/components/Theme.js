@@ -13,7 +13,6 @@ const Theme = ({ activeTheme, username, theme, rerender }) => {
     axios.patch(`/users/${username}/theme`, {theme}, config)
     .then(res => {
       rerender(theme);
-      console.log('reredner pls')
     })
     .catch(err => {
       console.log(err);
@@ -24,14 +23,16 @@ const Theme = ({ activeTheme, username, theme, rerender }) => {
     if (activeTheme === theme) {
       return 'active-theme';
     }
-    return '';
+    return 'default-theme';
   }
 
   return (
-    <div className={`box ${isActive()}`} onClick={submit}>
-      <div className={`theme-${theme}-thumb`}>
-        <span className="dot">
-        </span>
+    <div className={`${isActive()}`}>
+      <div className={`box`} onClick={submit}>
+        <div className={`theme-${theme}-thumb`}>
+          <span className="dot">
+          </span>
+        </div>
       </div>
     </div>
   )
