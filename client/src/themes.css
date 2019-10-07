@@ -23,13 +23,13 @@
 }
 
 .theme-3-thumb{
-  background-color: #1f1c1c;
+  background-color: #39e09b;
   flex-grow: 1;
   border-radius: 10px;
 }
 
 .theme-3-thumb .dot {
-  background-color: #39e09b;
+  background-color: white;
 }
 
 .theme-4-thumb{
@@ -39,47 +39,59 @@
 }
 
 .theme-4-thumb .dot {
-  background-color: #39e09b;
+  background-color: white;
 }
 
 .theme-5-thumb{
-  background-color: #1f1c1c;
+  background: #654ea3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #eaafc8, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #eaafc8, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
   flex-grow: 1;
   border-radius: 10px;
 }
 
 .theme-5-thumb .dot {
-  background-color: #39e09b;
+  border: 2px solid white;
+  margin-top: 18.25px;
 }
 
 .theme-6-thumb{
-  background-color: #1f1c1c;
+  background: #6441A5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #2a0845, #bf94ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #2a0845, #bf94ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
   flex-grow: 1;
   border-radius: 10px;
 }
 
 .theme-6-thumb .dot {
-  background-color: #39e09b;
+  border: 2px solid white;
+  margin-top: 18.25px;
 }
 
 .theme-7-thumb{
-  background-color: #1f1c1c;
+  background: #283048;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #859398, #283048);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
   flex-grow: 1;
   border-radius: 10px;
 }
 
 .theme-7-thumb .dot {
-  background-color: #39e09b;
+  border: 2px solid white;
+  margin-top: 18.25px;
 }
 
 .theme-8-thumb{
-  background-color: #1f1c1c;
+  background: #2BC0E4;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #EAECC6, #2BC0E4);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
   flex-grow: 1;
   border-radius: 10px;
 }
 
 .theme-8-thumb .dot {
-  background-color: #39e09b;
+  border: 2px solid white;
+  margin-top: 18.25px;
 }
 
 .dot {
@@ -111,12 +123,16 @@
 }
 
 .theme-2 .link:hover {
-  background-color: white;
+  background-color: #1f1c1c;
 }
 
 .theme-2 .linkContainer {
   border-color: #39e09b;
   color: #1f1c1c;
+}
+
+.theme-2 .linkContainer:hover {
+  color: #39e09b;
 }
 
 .theme-2 h2  {
@@ -132,21 +148,28 @@
   bottom: 0;
   height: 100%;
   width: 100%;
+  background-color: #39e09b;
+}
+
+.theme-3 .link {
   background-color: white;
 }
 
 .theme-3 .link:hover {
-  background-color: white;
+  background-color: #39e09b;
 }
 
 .theme-3 .linkContainer {
-  border-color: #39e09b;
-  color: #39e09b;
-  background-color: pink;
+  border-color: white;
+  color: #39e09b; 
+}
+
+.theme-3 .linkContainer:hover {
+  color: white;
 }
 
 .theme-3 h2  {
-  color: #39e09b;
+  color: white;
 }
 
 /*
@@ -162,20 +185,24 @@
 }
 
 .theme-4 .link {
-  background-color: #39e09b;
-}
-
-.theme-4 .link:hover {
   background-color: white;
 }
 
+.theme-4 .link:hover {
+  background-color: #1f1c1c;
+}
+
 .theme-4 .linkContainer {
-  border-color: #39e09b;
+  border-color: white;
   color: #1f1c1c;
 }
 
+.theme-4 .linkContainer:hover {
+  color: white;
+}
+
 .theme-4 h2  {
-  color: #39e09b;
+  color: white;
 }
 
 /*
@@ -187,11 +214,13 @@
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-color: #1f1c1c;
+  background: #654ea3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #eaafc8, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #eaafc8, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
 }
 
 .theme-5 .link {
-  background-color: #39e09b;
+  background-color: transparent;
 }
 
 .theme-5 .link:hover {
@@ -199,12 +228,16 @@
 }
 
 .theme-5 .linkContainer {
-  border-color: #39e09b;
-  color: #1f1c1c;
+  border-color: white;
+  color: white;
+}
+
+.theme-5 .linkContainer:hover {
+  color: #eaafc8;
 }
 
 .theme-5 h2  {
-  color: #39e09b;
+  color: white;
 }
 
 /*
@@ -216,11 +249,13 @@
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-color: #1f1c1c;
+  background: #6441A5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #2a0845, #bf94ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #2a0845, #bf94ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
 }
 
 .theme-6 .link {
-  background-color: #39e09b;
+  background-color: transparent;
 }
 
 .theme-6 .link:hover {
@@ -228,12 +263,16 @@
 }
 
 .theme-6 .linkContainer {
-  border-color: #39e09b;
-  color: #1f1c1c;
+  border-color: white;
+  color: white;
+}
+
+.theme-6 .linkContainer:hover {
+  color: #bf94ff;
 }
 
 .theme-6 h2  {
-  color: #39e09b;
+  color: white;
 }
 
 /*
@@ -245,11 +284,13 @@
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-color: #1f1c1c;
+  background: #283048;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #859398, #283048);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
 }
 
 .theme-7 .link {
-  background-color: #39e09b;
+  background-color: transparent;
 }
 
 .theme-7 .link:hover {
@@ -257,12 +298,16 @@
 }
 
 .theme-7 .linkContainer {
-  border-color: #39e09b;
-  color: #1f1c1c;
+  border-color: white;
+  color: white;
+}
+
+.theme-7 .linkContainer:hover {
+  color: #283048;
 }
 
 .theme-7 h2  {
-  color: #39e09b;
+  color: white;
 }
 
 /*
@@ -274,11 +319,13 @@
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-color: #1f1c1c;
+  background: #2BC0E4;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #EAECC6, #2BC0E4);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
 }
 
 .theme-8 .link {
-  background-color: #39e09b;
+  background-color: transparent;
 }
 
 .theme-8 .link:hover {
@@ -286,10 +333,14 @@
 }
 
 .theme-8 .linkContainer {
-  border-color: #39e09b;
-  color: #1f1c1c;
+  border-color: white;
+  color: white;
+}
+
+.theme-8 .linkContainer:hover {
+  color: #2BC0E4;
 }
 
 .theme-8 h2  {
-  color: #39e09b;
+  color: white;
 }

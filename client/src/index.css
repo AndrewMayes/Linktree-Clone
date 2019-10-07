@@ -42,6 +42,10 @@ h2 {
   text-align: center;
   padding: 17px;
   text-decoration: none;
+  color: #39e09b;
+}
+
+.linkContainer:hover {
   color: #1f1c1c;
 }
 
@@ -59,10 +63,11 @@ h2 {
 
 .link {
   font-weight: 700;
+  background-color: #1f1c1c;
 }
 
 .link:hover {
-  background-color: white;
+  background-color: #39e09b;
 }
 
 .loader {
