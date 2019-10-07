@@ -461,6 +461,10 @@ input {
   border-radius: 10px;
 }
 
+.empty-linktree {
+  color: white;
+}
+
 @media only screen and (max-width: 600px) {
   .buttons {
     flex-direction: column;

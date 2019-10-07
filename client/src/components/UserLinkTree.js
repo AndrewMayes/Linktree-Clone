@@ -41,7 +41,7 @@ const UserLinkTree = (props) => {
     : (<div className={(theme === 1) ? 'green-container' : `theme-${theme}`}>
         <UserHeader username={username}/>
         <div className="linksList">
-          {(links.length > 0) ? (links.map(link => <Link key={link._id} link={link}/>)) : (<h1>User's Linktree is empty!</h1>)}
+          {(links.length > 0) ? (links.map(link => <Link key={link._id} link={link}/>)) : (<h1 className="empty-linktree">User's Linktree is empty!</h1>)}
         </div>
       </div>)
   )
