@@ -1,7 +1,6 @@
 import React from 'react';
-import avatar from '../imgs/default.png';
 
-const UserHeader = ({ username }) => {
+const UserHeader = ({ username, avatar }) => {
   return (
     <header className="userContainer">
       <img className="avatarStyle" src={avatar} alt="user avatar"/>

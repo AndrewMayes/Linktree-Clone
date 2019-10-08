@@ -3,6 +3,34 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const verify = require('./verifyToken');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  // reject a file
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+}
+
+const upload = multer({
+  storage: storage, 
+  limits: {
+    //Max 5mb file size
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: fileFilter
+});
 
 require('dotenv').config();
 
@@ -137,6 +165,25 @@ router.patch('/:username/theme', verify, (req, res) => {
     .then(user => {
       const theme = req.body.theme;
       user.theme = parseInt(theme);
+      user.save()
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err))
+});
+
+// @route PATCH /users/:username/avatar
+// @desc Update a user's avatar
+// @access Private
+router.patch('/:username/avatar', verify, upload.single('userAvatar'), (req, res) => {
+  console.log(req.file);
+  const username = req.params.username;
+  const queryUsername = '^' + username + '$';
+  User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
+    .select('-password -email')
+    .then(user => {
+      const avatar = req.file.path;
+      user.avatar = avatar;
       user.save()
         .then(user => res.json(user))
         .catch(err => res.status(400).json('Error: ' + err));

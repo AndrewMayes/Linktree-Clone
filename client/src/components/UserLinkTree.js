@@ -13,6 +13,8 @@ const UserLinkTree = (props) => {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [theme, setTheme] = useState(1);
+  //const [avatar, setAvatar] = useState(avatar);
+  const [userAvatar, setUserAvatar] = useState('');
 
   useEffect(() => {
     const getLinks = () => {
@@ -22,6 +24,7 @@ const UserLinkTree = (props) => {
           setUsername(res.data.username);
           setTheme(res.data.theme);
           setLoading(false);
+          setUserAvatar(res.data.avatar);
         })
         .catch(err => {
           console.log(err.response);
@@ -39,7 +42,7 @@ const UserLinkTree = (props) => {
     (loading && !notFound) ? <div className="green-container"><div className="loader"><ClipLoader sizeUnit={"px"} size={150} color={'rgb(31, 28, 28)'} loading={true}/></div></div>
     : (notFound) ? <NotFound /> 
     : (<div className={(theme === 1) ? 'green-container' : `theme-${theme}`}>
-        <UserHeader username={username}/>
+        <UserHeader username={username} avatar={userAvatar}/>
         <div className="linksList">
           {(links.length > 0) ? (links.map(link => <Link key={link._id} link={link}/>)) : (<h1 className="empty-linktree">User's Linktree is empty!</h1>)}
         </div>

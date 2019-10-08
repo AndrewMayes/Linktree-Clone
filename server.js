@@ -14,6 +14,9 @@ const port = process.env.PORT || 5000;
 // Cors Middleware
 app.use(cors());
 
+// Make uploads folder public
+app.use('/uploads', express.static('uploads'));
+
 // Parse json
 app.use(express.json());
 

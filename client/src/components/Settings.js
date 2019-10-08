@@ -6,8 +6,29 @@ import avatar from '../imgs/default.png';
 
 const Settings = ({ username }) => {
 
+  const [userAvatar, setUserAvatar] = useState(avatar);
+
+  const token = localStorage.getItem('auth-token');
+  const config = {
+    headers: {'auth-token': token}
+  }
+
   const onClick = () => {
-    console.log('clickeee');
+    console.log('clicked');
+  }
+
+  const onChange = e => {
+    const userAvatar = e.target.files[0];
+
+    const formData = new FormData();
+    formData.append('userAvatar', userAvatar);
+
+    axios.patch(`/users/${username}/avatar`, formData, config)
+      .then(res => {
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   const [newTheme, setNewTheme] = useState(0);
@@ -40,7 +61,7 @@ const Settings = ({ username }) => {
       <div className="settings-container">
         <div className="avatar-container">
           <div className="avatar">
-            <input type="image" alt="avatar" src={avatar} name="change-avatar" className="change-avatar-style" onClick={onClick}/>
+            <input type="file" alt="avatar" name="change-avatar"  onClick={onClick} onChange={onChange}/>
           </div>
           <div className="avatar-form">
             <div className="remove-button" onClick={onClick}>Remove</div>

@@ -31,6 +31,10 @@ const UserSchema = new Schema({
     type: Number,
     default: 1
   },
+  avatar: {
+    type: String,
+    default: 'uploads/default.png'
+  },
   links: {
     type: [LinkSchema]
   }
