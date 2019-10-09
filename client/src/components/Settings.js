@@ -3,6 +3,7 @@ import axios from 'axios';
 import AdminHeader from './AdminHeader';
 import Theme from './Theme';
 import avatar from '../imgs/default.png';
+import Modal from './Modal';
 
 const Settings = ({ username }) => {
 
@@ -61,7 +62,7 @@ const Settings = ({ username }) => {
       <div className="settings-container">
         <div className="avatar-container">
           <div className="avatar">
-            <input type="file" alt="avatar" name="change-avatar"  onClick={onClick} onChange={onChange}/>
+            <Modal username={username}/>
           </div>
           <div className="avatar-form">
             <div className="remove-button" onClick={onClick}>Remove</div>
