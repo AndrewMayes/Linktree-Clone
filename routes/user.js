@@ -191,6 +191,23 @@ router.patch('/:username/avatar', verify, upload.single('userAvatar'), (req, res
     .catch(err => res.status(400).json('Error: ' + err))
 });
 
+// @route PATCH /users/:username/defaultAvatar
+// @desc Update a user's avatar to the default avatar picture
+// @access Private
+router.patch('/:username/defaultAvatar', verify, (req, res) => {
+  const username = req.params.username;
+  const queryUsername = '^' + username + '$';
+  User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
+    .select('-password -email')
+    .then(user => {
+      user.avatar = 'uploads/default.png';
+      user.save()
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err))
+});
+
 
 // Login/Register routes
 

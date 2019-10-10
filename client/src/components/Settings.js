@@ -2,40 +2,36 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AdminHeader from './AdminHeader';
 import Theme from './Theme';
-import avatar from '../imgs/default.png';
+import defaultAvatar from '../imgs/default.png';
 import Modal from './Modal';
 
-const Settings = ({ username }) => {
+const Settings = ({ username, avatar }) => {
 
-  const [userAvatar, setUserAvatar] = useState(avatar);
+  const [userAvatar, setUserAvatar] = useState();
 
   const token = localStorage.getItem('auth-token');
   const config = {
     headers: {'auth-token': token}
   }
 
-  const onClick = () => {
-    console.log('clicked');
-  }
-
-  const onChange = e => {
-    const userAvatar = e.target.files[0];
-
-    const formData = new FormData();
-    formData.append('userAvatar', userAvatar);
-
-    axios.patch(`/users/${username}/avatar`, formData, config)
-      .then(res => {
-      })
-      .catch(err => {
-        console.log(err);
-      })
+  const removeAvatar = () => {
+    axios.patch(`/users/${username}/defaultAvatar`, {}, config)
+    .then(res => {
+      setUserAvatar(defaultAvatar);
+    })
+    .catch(err => {
+      console.log(err.response);
+    })
   }
 
   const [newTheme, setNewTheme] = useState(0);
 
   const rerender = (theme) => {
     setNewTheme(theme);
+  }
+
+  const rerenderAvatar = (avatar) => {
+    setUserAvatar(avatar);
   }
 
   useEffect(() => {
@@ -48,13 +44,14 @@ const Settings = ({ username }) => {
       axios.get(`/users/admin`, config)
         .then(res => {
           setNewTheme(res.data.theme);
+          setUserAvatar(res.data.avatar);
         })
         .catch(err => {
           console.log(err);
         })
     }
     getTheme();
-  }, [newTheme])
+  }, [newTheme, avatar])
 
   return (
     <>
@@ -62,10 +59,10 @@ const Settings = ({ username }) => {
       <div className="settings-container">
         <div className="avatar-container">
           <div className="avatar">
-            <Modal username={username}/>
+            <Modal username={username} avatar={userAvatar} rerender={rerenderAvatar}/>
           </div>
           <div className="avatar-form">
-            <div className="remove-button" onClick={onClick}>Remove</div>
+            <div className="remove-button" onClick={removeAvatar}>Remove</div>
           </div>
         </div>
         <div className="color-container">

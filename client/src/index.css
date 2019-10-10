@@ -79,6 +79,15 @@ h2 {
   overflow: hidden;
 }
 
+.avatar-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20vh;
+  overflow: hidden;
+}
+
 .buttons {
   display: flex;
   justify-content: center;
@@ -424,6 +433,26 @@ input {
   border-radius: 3px;
   width: 82px;
   height: 82px;
+  cursor: pointer;
+}
+
+.modal-avatar-container {
+  text-align: center;
+}
+
+.edit-avatar-container {
+  display: inline-block;
+}
+
+.avatar-buttons-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.avatar-buttons button {
+  margin: 10px;
+  border: 1px solid #39e09b;
+  background: transparent;
   cursor: pointer;
 }
 

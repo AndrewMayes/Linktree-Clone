@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import Avatar from 'react-avatar-edit';
 import axios from 'axios';
-import pic from '../imgs/default.png';
 
-const AvatarComponent = ({ closeModal, username }) => {
+const AvatarComponent = ({ closeModal, username, avatar, rerender}) => {
 
   const [preview, setPreview] = useState(null);
-  const [avatar, setAvatar] = useState(pic);
-  const [final, setFinal] = useState(null);
   const [previewFileName, setPreviewFileName] = useState(null);
 
   const token = localStorage.getItem('auth-token');
@@ -21,7 +18,6 @@ const AvatarComponent = ({ closeModal, username }) => {
 
   const onCrop = (preview) => {
     setPreview(preview);
-    console.log(preview);
   }
 
   const onBeforeFileLoad = (e) => {
@@ -33,10 +29,8 @@ const AvatarComponent = ({ closeModal, username }) => {
 
       const formData = new FormData();
       formData.append('userAvatar', userAvatar);
-      setAvatar(formData)
-      //console.log(e.target.files);
-      //console.log(avatar)
-      console.log(...formData);
+      
+
       const imgName = formData.getAll('userAvatar')[0].name
       setPreviewFileName(imgName);
     }
@@ -65,6 +59,7 @@ const submitAvatar = () => {
 
   axios.patch(`/users/${username}/avatar`, newFD, config)
   .then(res => {
+    rerender(preview);
   })
   .catch(err => {
     console.log(err.response);
@@ -74,18 +69,26 @@ const submitAvatar = () => {
 }
 
   return (
-    <div>
-      <Avatar
-        width={250}
-        height={250}
-        onCrop={onCrop}
-        onClose={onClose}
-        src={avatar}
-        onBeforeFileLoad={onBeforeFileLoad}
-      />
-      <img style={{width: '150px', height: '150px'}}src={preview} alt="Preview" />
-      <button onClick={submitAvatar}>Upload!</button>
-  </div>
+    <>
+      <div className="modal-avatar-container">
+        <div className="edit-avatar-container">
+          <Avatar
+            width={250}
+            height={250}
+            onCrop={onCrop}
+            onClose={onClose}
+            src={avatar}
+            onBeforeFileLoad={onBeforeFileLoad}
+          />
+        </div>
+      </div>
+      <div className="avatar-buttons-container">
+        <div className="avatar-buttons">
+          <button onClick={closeModal}>Close</button>
+          <button onClick={submitAvatar}>Upload!</button>
+        </div>
+      </div>
+    </>
   )
 }
 

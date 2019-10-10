@@ -9,6 +9,7 @@ const State = ({ component }) => {
 
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(true);
+  const [avatar, setAvatar] = useState();
 
   useEffect(() => {
     const token = localStorage.getItem('auth-token');
@@ -21,6 +22,7 @@ const State = ({ component }) => {
         .then(res => {
           setUsername(res.data.username);
           setLoading(false);
+          setAvatar(res.data.avatar);
         })
         .catch(err => {
           console.log(err);
@@ -36,7 +38,7 @@ const State = ({ component }) => {
       case 'edit':
         return <Edit username={username} />
       case 'settings':
-        return <Settings username={username} />
+        return <Settings username={username} avatar={avatar} />
       default:
         return null;
     }
