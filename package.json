@@ -23,6 +23,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.0",
     "multer": "^1.4.2",
+    "newrelic": "^5.13.1",
     "react-avatar-edit": "^0.8.3"
   },
   "devDependencies": {
