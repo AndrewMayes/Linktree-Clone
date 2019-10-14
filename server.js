@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 require('dotenv').config();
-require('newrelic');
 
 // Create Express server
 const app = express();
