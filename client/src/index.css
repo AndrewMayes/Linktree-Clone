@@ -23,6 +23,7 @@ h2 {
   height: 100%;
   width: 100%;
   background-color: #39e09b;
+  overflow: auto;
 }
 
 .linksList {
@@ -43,6 +44,7 @@ h2 {
   padding: 17px;
   text-decoration: none;
   color: #39e09b;
+  overflow: hidden;
 }
 
 .linkContainer:hover {
@@ -413,6 +415,7 @@ input {
   width: 470px;
   margin: auto;
   margin-top: 50px;
+  margin-bottom: 60px;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -532,5 +535,84 @@ input {
 @media only screen and (max-width: 570px) {
   .header-links {
     margin: 20px;
+  }
+
+  .themes-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .settings-container {
+    height: 700px;
+    width: 50vh;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .themes-container {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0px;
+  }
+
+  .settings-container {
+    height: 600px;
+    width: 33vh;
+  }
+
+  .avatar-form {
+    width: auto;
+    margin: 0px 0px 0px 30px;
+  }
+}
+
+@media only screen and (max-width: 735px) {
+  .linksList {
+    max-width: 480px;
+  }
+  
+  .edit-url-wrap {
+    max-width: 320px;
+  }
+
+  .edit-linkTitle-wrap {
+    max-width: 320px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .linksList {
+    max-width: 320px;
+  }
+
+  .edit-url-wrap {
+    max-width: 180px;
+  }
+
+  .edit-linkTitle-wrap {
+    max-width: 180px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .linksList {
+    max-width: 300px;
+  }
+}
+
+@media only screen and (max-height: 730px) {
+  .avatar-form {
+    width: 70px;
+    margin: 0px 0px 0px 20px;
+  }
+}
+
+@media only screen and (max-height: 660px) {
+  .avatar-form {
+    margin: 0px 0px 0px 10px;
+  }
+}
+
+@media only screen and (max-height: 660px) {
+  .avatar-form {
+    margin: 0px 0px 0px 10px;
   }
 }

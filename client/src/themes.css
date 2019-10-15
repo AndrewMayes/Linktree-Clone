@@ -116,6 +116,7 @@
   height: 100%;
   width: 100%;
   background-color: #1f1c1c;
+  overflow: auto;
 }
 
 .theme-2 .link {
@@ -149,6 +150,7 @@
   height: 100%;
   width: 100%;
   background-color: #39e09b;
+  overflow: auto;
 }
 
 .theme-3 .link {
@@ -182,6 +184,7 @@
   height: 100%;
   width: 100%;
   background-color: #1f1c1c;
+  overflow: auto;
 }
 
 .theme-4 .link {
@@ -217,6 +220,7 @@
   background: #654ea3;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #eaafc8, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #eaafc8, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+  overflow: auto;
 }
 
 .theme-5 .link {
@@ -252,6 +256,7 @@
   background: #6441A5;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #2a0845, #bf94ff);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #2a0845, #bf94ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  overflow: auto;
 }
 
 .theme-6 .link {
@@ -286,7 +291,8 @@
   width: 100%;
   background: #283048;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #859398, #283048);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  background: linear-gradient(to top, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+  overflow: auto; 
 }
 
 .theme-7 .link {
@@ -322,6 +328,7 @@
   background: #2BC0E4;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #EAECC6, #2BC0E4);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  overflow: auto;
 }
 
 .theme-8 .link {
